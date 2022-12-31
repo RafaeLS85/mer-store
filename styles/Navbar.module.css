@@ -1,0 +1,14 @@
+.main{
+    padding: 10px;
+    color:black;
+    display: flex;
+    background-color: #FEFAF6;
+}
+
+.item{
+    font-family: 'Europa';
+    color: #553605;
+    text-transform: uppercase;
+    font-size: 17px;
+    margin: 5px;
+}
