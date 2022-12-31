@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <Layout title='La tienda de Mer'>
-        <main className={styles.main}>
+      <Layout title='La tienda de Mer' >
+        <main className={`${styles.main}`}>
           <Navbar />
         
         
