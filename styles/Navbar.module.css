@@ -1,5 +1,5 @@
 .main{
-    padding: 10px;
+    padding: 4vw;
     color:black;
     display: flex;
     background-color: #FEFAF6;
@@ -11,4 +11,22 @@
     text-transform: uppercase;
     font-size: 17px;
     margin: 5px;
+}
+
+.hide-menu{
+    display: flex;
+}
+
+.show-button{
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .hide-menu{
+        display: none;
+    }
+    .show-button{
+        display: flex;
+    }
+    
 }
