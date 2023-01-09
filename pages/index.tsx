@@ -2,21 +2,22 @@ import { Inter } from "@next/font/google";
 import Layout from "../components/layout/Layout";
 import Navbar from "../components/Navbar/Navbar";
 import { MenuContext } from "../context/MenuContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Menu from "../components/Menu/Menu";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { show } = useContext(MenuContext);
-
+  
   return (
     <>
       <Layout title="La tienda de Mer">
         <main >
           <Navbar />
 
-          {show && <Menu />}
+          { show && <Menu /> }
 
           {!show && (
             <>

@@ -13,7 +13,7 @@ export default function NavbarItems({ items }: Props) {
 
   const matches = useMediaQuery('(max-width: 800px)')
 
-  console.log({matches})
+  // console.log({matches})
 
   const itemsStyles = {
     main: {
@@ -31,7 +31,7 @@ export default function NavbarItems({ items }: Props) {
       alignSelf: 'center'
     },
     hide: {
-      display: matches ? "none" : 'flex',
+      display: !matches ? 'flex' : 'none',
     },
 
     show_btn: {
