@@ -169,7 +169,7 @@ button.burger{
   transform-origin: left;
   transform:rotate(45deg);
   width:40px;
-  background-color:#e30935;
+  background-color:#553605;
 }
 .burger.expanded span.bar-2{
   opacity:0;
@@ -180,5 +180,5 @@ button.burger{
   transform-origin: left;
   transform:rotate(-45deg);
   width:40px;
-  background-color:#e30935;
+  background-color:#553605;
 }

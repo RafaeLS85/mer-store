@@ -1,5 +1,7 @@
 import NavbarItems from "./NavbarItems";
-import styles from '../../styles/Navbar.module.css'
+import { useContext } from "react";
+import { MenuContext } from "../../context/MenuContext";
+import { items } from "../../constants/menuItems";
 
 export interface MenuItems {
   name: string;
@@ -8,16 +10,29 @@ export interface MenuItems {
 }
 
 export default function Navbar() {
-  const items: MenuItems[] = [
-    { name: "Home", id: 1, url: "/" },
-    { name: "About", id: 2, url: "/about" },
-    { name: "Products", id: 3, url: "/products" },
-    { name: "Recipes", id: 4, url: "/recipes" },
-    { name: "Contact", id: 5, url: "/contact" },
-  ];
+  const { show } = useContext(MenuContext);
+ 
+
+  const navStyles = {
+    main: {
+      padding: '2vw',
+      color: 'black',
+      display: 'flex',
+      backgroundColor: '#FEFAF6'
+    },
+    sticky: {
+      position: 'fixed' as const,
+      top: '0',
+      width: '100%'
+    }
+  };
+
+  // show ? navStyles.sticky : ''
+
+  const sticky = show ? navStyles.sticky : ''
 
   return (
-    <nav className={styles.main}>
+    <nav style={Object.assign(navStyles.main, sticky)} >
       <NavbarItems items={items} />
     </nav>
   );
