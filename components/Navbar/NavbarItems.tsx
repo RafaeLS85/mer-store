@@ -64,7 +64,7 @@ export default function NavbarItems({ items }: Props) {
           />
         </div>
 
-        <div className="flex">
+        <div className="flex mr-4">
           <ul className={`flex`} style={itemsStyles.hide} >
             {items.map((item) => (
               <li key={item.id} style={itemsStyles.item} >

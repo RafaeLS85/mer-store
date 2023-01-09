@@ -32,7 +32,7 @@ export default function Navbar() {
   const sticky = show ? navStyles.sticky : ''
 
   return (
-    <nav style={Object.assign(navStyles.main, sticky)} >
+    <nav style={Object.assign(navStyles.main, sticky)} id='navbar' >
       <NavbarItems items={items} />
     </nav>
   );
