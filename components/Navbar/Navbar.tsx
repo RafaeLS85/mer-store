@@ -15,7 +15,7 @@ export default function Navbar() {
 
   const navStyles = {
     main: {
-      padding: '2vw',
+      padding: '5px',
       color: 'black',
       display: 'flex',
       backgroundColor: '#FEFAF6'

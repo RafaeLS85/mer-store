@@ -16,3 +16,5 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 
 https://www.thehoneystore.net/
+
+https://www.logomaker.net/logo-maker/dashboard

@@ -56,7 +56,7 @@ export default function NavbarItems({ items }: Props) {
       <div className="flex justify-between">
         <div>
           <Image
-            src="/tempHeaderLogo.png"
+            src="/logo.png"
             alt="logo"
             width={150}
             height={150}
