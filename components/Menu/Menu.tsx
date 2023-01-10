@@ -15,17 +15,17 @@ export default function Menu() {
       <div className="flex h-4 bg-[#FEFAF6]" style={styles.container}>
         <span></span>
       </div>
-      <div className="flex bg-[#FEFAF6] h-screen text-[#553605] text-lg uppercase p-6">
+      <div className="flex justify-center bg-[#FEFAF6] h-screen text-[#553605] text-lg uppercase p-6 ">
         <ul>
           {items.map((item) => (
-            <li key={item.id} className="p-4">
+            <li key={item.id} className="p-4 text-center">
               {item.name}
             </li>
           ))}
-          <li>
-            <FaInstagramSquare size={30} />
+          <li className="p-4">
+            <FaInstagramSquare size={30} className="mx-auto"/>
           </li>
-          <li>
+          <li className="p-4 text-center">
             <ShopBtn />
           </li>
         </ul>
