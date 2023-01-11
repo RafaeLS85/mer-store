@@ -1,12 +1,10 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import useToggleBtn from "../../hooks/useToggleBtn";
 
-interface ToggleBtnProps {
-  handleClick: () => void;
-}
 
-export default function ToggleBtn({ handleClick }: ToggleBtnProps) {
+
+export default function ToggleBtn() {
   const { show, setShow } = useContext(MenuContext);
   const {expanded, setExpanded} = useToggleBtn();
   

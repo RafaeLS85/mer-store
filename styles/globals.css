@@ -15,7 +15,7 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: 'Europa', 'Grandma';
+  --font-mono: "Europa", "Grandma";
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -110,70 +110,90 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
-  } 
+  }
 }
+
+/*************************/
+/******* navbar **********/
+/*************************/
+
+.item {
+  font-family: "Europa";
+  color: #553605;
+  text-transform: uppercase;
+  font-size: 17px;
+  margin: 5px 12px;
+  align-self: center; 
+}
+
+.item:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 
 /*-------------------------------------------*/
-button.burger{
-  background-color:transparent;
-  border:none;
-  height:30px;
-  outline:none;
-  padding:8px;
+/*-------------------------------------------*/
+/*-------------------------------------------*/
+button.burger {
+  background-color: transparent;
+  border: none;
+  height: 30px;
+  outline: none;
+  padding: 8px;
   position: relative;
-  width:58px;
-  transition: transform 0.7s cubic-bezier(.25,.8,.25,1);
-  width:58px;
+  width: 58px;
+  transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 58px;
 }
 
-
-.burger span{
-  background-color:#553605;
-  border-radius:25px;
-  display:block;
-  height:4px;
+.burger span {
+  background-color: #553605;
+  border-radius: 25px;
+  display: block;
+  height: 4px;
   position: absolute;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  width:40px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 40px;
 }
 
-.burger span.bar-1{
-  top:0;
-  width:30px;
+.burger span.bar-1 {
+  top: 0;
+  width: 30px;
 }
-.burger span.bar-2{
-  top:12px;
-  width:40px;
+.burger span.bar-2 {
+  top: 12px;
+  width: 40px;
 }
-.burger span.bar-3{
-  right:8px;
-  top:24px;
-  width:25px;
-}
-
-.burger.expanded{
-  height:30px;
-  transform:rotate(180deg);
-  transition: all 0.7s cubic-bezier(.25,.8,.25,1);
-  width:58px;
+.burger span.bar-3 {
+  right: 8px;
+  top: 24px;
+  width: 25px;
 }
 
-.burger.expanded span.bar-1{
-  left:13px;
-  top:-2px;
+.burger.expanded {
+  height: 30px;
+  transform: rotate(180deg);
+  transition: all 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 58px;
+}
+
+.burger.expanded span.bar-1 {
+  left: 13px;
+  top: -2px;
   transform-origin: left;
-  transform:rotate(45deg);
-  width:40px;
-  background-color:#553605;
+  transform: rotate(45deg);
+  width: 40px;
+  background-color: #553605;
 }
-.burger.expanded span.bar-2{
-  opacity:0;
+.burger.expanded span.bar-2 {
+  opacity: 0;
 }
-.burger.expanded span.bar-3{
-  left:13px;
-  top:26px;
+.burger.expanded span.bar-3 {
+  left: 13px;
+  top: 26px;
   transform-origin: left;
-  transform:rotate(-45deg);
-  width:40px;
-  background-color:#553605;
+  transform: rotate(-45deg);
+  width: 40px;
+  background-color: #553605;
 }

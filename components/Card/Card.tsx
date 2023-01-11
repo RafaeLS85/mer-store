@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CardItem } from "./CardContainer";
 
 export default function Card(item: CardItem) {
@@ -14,7 +15,7 @@ export default function Card(item: CardItem) {
       fontWeight: "bold",
       whiteSpace: "pre-wrap",
       textTransform: "uppercase",
-      padding: '1rem'
+      padding: "1rem",
     },
   };
 
@@ -24,7 +25,7 @@ export default function Card(item: CardItem) {
 
   return (
     <div className="cursor-pointer" onClick={() => handleClick(path)}>
-      <img src={image} alt={title} />
+      <Image src={image} alt={title} width={300} height={300} priority />
       <div style={Object.assign(styles.button)}>{title}</div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { MenuItems } from "../components/Navbar/Navbar";
+import { MenuItems } from "../components/Navbar/NavbarItems";
 
 export const items: MenuItems[] = [
     { name: "Home", id: 1, url: "/" },
