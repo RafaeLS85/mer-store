@@ -53,8 +53,7 @@ export default function NavbarItems() {
                 key={item.id}
                 className="item"
                 style={{
-                  textDecoration:
-                    index === selectedIndex ? "underline" : "none",
+                   borderBottom: index === selectedIndex ? '2px solid #553605' : 'none' 
                 }}
                 onClick={() => handleClick(item, index)}
               >
