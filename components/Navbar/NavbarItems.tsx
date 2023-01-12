@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { useState } from "react";
 import ToggleBtn from "../ToggleBtn/ToggleBtn";
 import { FaInstagramSquare } from "react-icons/fa";
 import ShopBtn from "../ShopBtn/ShopBtn";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useRouter } from "next/router";
 import { items } from "../../constants/menuItems";
+import { mediaQueryNav } from "../../constants/config";
+import useSelectedPath from "../../hooks/useSelectedPath";
 export interface MenuItems {
   name: string;
   id: number;
@@ -13,12 +14,13 @@ export interface MenuItems {
 }
 
 export default function NavbarItems() {
-  const matches = useMediaQuery("(max-width: 800px)");
+  const matches = useMediaQuery(mediaQueryNav);
   const router = useRouter();
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
+  const { selectedPath, setSelectedPath, getPathFromIndex} = useSelectedPath()
+  
   const handleClick = (item: MenuItems, index: number) => {
-    setSelectedIndex(index);
+    const path = getPathFromIndex(index)
+    setSelectedPath(path);
     router.push(item.url);
   };
 
@@ -53,7 +55,7 @@ export default function NavbarItems() {
                 key={item.id}
                 className="item"
                 style={{
-                   borderBottom: index === selectedIndex ? '2px solid #553605' : 'none' 
+                   borderBottom: getPathFromIndex(index) === selectedPath ? '2px solid #553605' : 'none' 
                 }}
                 onClick={() => handleClick(item, index)}
               >

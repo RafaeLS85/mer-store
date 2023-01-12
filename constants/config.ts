@@ -16,3 +16,5 @@ export const META = {
       height: "630",
     },
   };
+
+  export const mediaQueryNav = '(max-width: 850px)'
