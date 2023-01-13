@@ -1,3 +1,5 @@
+import { mediaQueryMobile } from "../../constants/config";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 interface Props {
     title: string
@@ -5,10 +7,12 @@ interface Props {
 
 export default function HeaderTitle({title}: Props  ) {
 
+    const isMobile = useMediaQuery(mediaQueryMobile)
+
     const styles = {
       title: {
           fontFamily: 'Grandma',
-          fontSize: '50px',
+          fontSize: isMobile ? '38px':'54px',
           textAlign:'center',
           fontWeight: 'bold',
           color: '#553605',          
@@ -18,7 +22,7 @@ export default function HeaderTitle({title}: Props  ) {
     }  
 
     return (
-        <div className="p-8">
+        <div className="m-14">
             <h2 style={Object.assign(styles.title)}>{title}</h2>
         </div>
     );

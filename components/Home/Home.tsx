@@ -1,6 +1,8 @@
 import CardContainer, { CardItem } from "../Card/CardContainer";
 import HeaderSection from "./HeaderSection";
 import HeaderTitle from "./HeaderTitle";
+import ShopButton from "./ShopButton";
+import WhoWeAre from "./WhoWeAre";
 
 export default function HomePage() {
   const cards: CardItem[] = [
@@ -29,6 +31,8 @@ export default function HomePage() {
       <HeaderSection />
       <HeaderTitle title="What We Offer" />
       <CardContainer cards={cards} />
+      <ShopButton />
+      <WhoWeAre />
     </>
   );
 }

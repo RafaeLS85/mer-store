@@ -18,3 +18,4 @@ export const META = {
   };
 
   export const mediaQueryNav = '(max-width: 850px)'
+  export const mediaQueryMobile = '(max-width: 400px)'
