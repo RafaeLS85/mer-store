@@ -1,7 +1,7 @@
 import { FaInstagramSquare } from "react-icons/fa";
 import { items } from "../../constants/menuItems";
 import { getElementHeight } from "../../utils/Utils";
-import ShopBtn from "../ShopBtn/ShopBtn";
+import ShopBtn from "../Navbar/ShopBtn";
 
 export default function Menu() {
   const styles = {
@@ -26,7 +26,7 @@ export default function Menu() {
             <FaInstagramSquare size={30} className="mx-auto"/>
           </li>
           <li className="p-4 text-center">
-            <ShopBtn />
+            <ShopBtn title="COMPRAR" />
           </li>
         </ul>
       </div>

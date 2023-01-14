@@ -22,7 +22,7 @@ export default function HeaderTitle({title}: Props  ) {
     }  
 
     return (
-        <div className="m-14">
+        <div className={`${isMobile ? 'mt-14' : 'm-14'}`}>
             <h2 style={Object.assign(styles.title)}>{title}</h2>
         </div>
     );

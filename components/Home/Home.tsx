@@ -1,8 +1,12 @@
+import Image from "next/image";
 import CardContainer, { CardItem } from "../Card/CardContainer";
+import BannerImage from "./BannerImage";
 import HeaderSection from "./HeaderSection";
 import HeaderTitle from "./HeaderTitle";
 import ShopButton from "./ShopButton";
 import WhoWeAre from "./WhoWeAre";
+import Contact from "../Contact/Contact";
+import Footer from "../Footer/Footer";
 
 export default function HomePage() {
   const cards: CardItem[] = [
@@ -31,8 +35,11 @@ export default function HomePage() {
       <HeaderSection />
       <HeaderTitle title="What We Offer" />
       <CardContainer cards={cards} />
-      <ShopButton />
+      <ShopButton title="SHOP ONLINE" />
       <WhoWeAre />
+      <BannerImage />   
+      <Contact />
+      <Footer />  
     </>
   );
 }

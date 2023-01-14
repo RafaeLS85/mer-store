@@ -1,11 +1,11 @@
 import Image from "next/image";
 import ToggleBtn from "../ToggleBtn/ToggleBtn";
 import { FaInstagramSquare } from "react-icons/fa";
-import ShopBtn from "../ShopBtn/ShopBtn";
+import ShopBtn from "./ShopBtn";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useRouter } from "next/router";
 import { items } from "../../constants/menuItems";
-import { mediaQueryNav } from "../../constants/config";
+import { mediaQueryMobile, mediaQueryNav } from "../../constants/config";
 import useSelectedPath from "../../hooks/useSelectedPath";
 export interface MenuItems {
   name: string;
@@ -15,6 +15,7 @@ export interface MenuItems {
 
 export default function NavbarItems() {
   const matches = useMediaQuery(mediaQueryNav);
+  const isMobile = useMediaQuery(mediaQueryMobile);
   const router = useRouter();
   const { selectedPath, setSelectedPath, getPathFromIndex} = useSelectedPath()
   
@@ -44,8 +45,8 @@ export default function NavbarItems() {
   return (
     <div className="grid gap-4 bg['#FEFAF6'] w-full">
       <div className="flex justify-between">
-        <div>
-          <Image src="/logo.png" alt="logo" width={150} height={150} priority />
+        <div className={` ${isMobile  ? '' : 'ml-4'}`}>
+          <Image src="/logo-example.png" alt="logo" width={100} height={100} priority  />
         </div>
 
         <div className="flex mr-4">
@@ -66,7 +67,7 @@ export default function NavbarItems() {
               <FaInstagramSquare size={30} />
             </li>
             <li className="item">
-              <ShopBtn />
+              <ShopBtn title="COMPRAR"/>
             </li>
           </ul>
           <div style={navbarItemsCss.show_btn}>

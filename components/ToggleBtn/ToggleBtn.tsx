@@ -2,8 +2,6 @@ import { useContext } from "react";
 import { MenuContext } from "../../context/MenuContext";
 import useToggleBtn from "../../hooks/useToggleBtn";
 
-
-
 export default function ToggleBtn() {
   const { show, setShow } = useContext(MenuContext);
   const {expanded, setExpanded} = useToggleBtn();

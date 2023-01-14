@@ -1,4 +1,14 @@
-export default function ShopButton(){
+import { useRouter } from "next/router";
+
+interface Props {
+    title: string;
+    url?: string;
+}
+
+export default function ShopButton({ title, url = '/' }: Props ){
+
+    const router = useRouter();
+
     return (
         <div className="flex justify-center m-14">
             <button style={{
@@ -10,9 +20,9 @@ export default function ShopButton(){
                     padding: '1em 1.67em', 
                     borderRadius: '30px',                     
                     }}
-                    onClick={() => console.log('click')}   
+                    onClick={() => router.push(url)}   
                 >
-            SHOP ONLINE
+            { title }
         </button>
         </div>
     )

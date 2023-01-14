@@ -14,17 +14,19 @@ export default function WhoWeAre() {
 
   const title = {
     fontFamily: "Grandma",
+    textAlign: "center" as const,
+    textTransform: "uppercase" as const,
     fontSize: "37px",
     color: "#553605",
     fontWeight: "bold",
-    textTransform: "uppercase" as const,
+    margin: '2.5rem auto'
   };
 
-  const w50 = isSmallScreen ? null : "w-1/2";
+  const w50 = isSmallScreen ? '' : "w-1/2";
 
   return (
-    <div className="flex justify-center p-6  flex-wrap  bg-[#EAD1A4]">
-      <div className={`${w50}`}>
+    <div className="flex p-6  flex-wrap  bg-[#EAD1A4]">
+      <div className={`${w50} flex justify-center `}>
         <Image
           src="https://picsum.photos/400/400"
           alt="who-we-are"
@@ -33,7 +35,7 @@ export default function WhoWeAre() {
         />
       </div>
 
-      <div className={`${w50}`}>
+      <div className={`${w50} `}>
         <h1 style={title}> Who We Are </h1>
         <p style={p}>
           In a world of artificial this and manufactured that, The Honey Store
@@ -48,12 +50,8 @@ export default function WhoWeAre() {
           we have, and order a gift for that special someone, for Christmas, or
           anytime to brighten their day.
         </p>
-        <ShopButton />
-
+        <ShopButton title='SHOP ONLINE' url="/products"/>
       </div>
-
-
-
     </div>
   );
 }
