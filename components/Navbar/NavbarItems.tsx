@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ToggleBtn from "../ToggleBtn/ToggleBtn";
-import { FaInstagramSquare } from "react-icons/fa";
+import {RiInstagramFill} from "react-icons/ri"
 import ShopBtn from "./ShopBtn";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { useRouter } from "next/router";
@@ -64,7 +64,7 @@ export default function NavbarItems() {
               </li>
             ))}
             <li className="item">
-              <FaInstagramSquare size={30} />
+              <RiInstagramFill size={30} />
             </li>
             <li className="item">
               <ShopBtn title="COMPRAR"/>

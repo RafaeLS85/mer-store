@@ -7,6 +7,8 @@ const URL = process.env.NEXT_PUBLIC_URL;
 const api = {
     list: async (): Promise<Product[] | []> => {
 
+        console.log('api call')
+
         if(!URL) return []
 
         return axios

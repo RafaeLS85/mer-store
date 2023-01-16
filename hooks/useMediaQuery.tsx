@@ -8,8 +8,7 @@ function useMediaQuery(query: string): boolean {
     }
     return false
   }
-
-  // const [matches, setMatches] = useState<boolean>(getMatches(query))
+  
   const [matches, setMatches] = useState<boolean>(false)
 
   function handleChange() {
@@ -18,11 +17,9 @@ function useMediaQuery(query: string): boolean {
 
   useEffect(() => {
     const matchMedia = window.matchMedia(query)
-
-    // Triggered at the first client-side load and if query changes
+    
     handleChange()
-
-    // Listen matchMedia
+    
     if (matchMedia.addListener) {
       matchMedia.addListener(handleChange)
     } else {
