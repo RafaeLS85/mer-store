@@ -25,6 +25,10 @@ export default function NavbarItems() {
     router.push(item.url);
   };
 
+  
+
+
+
   const navbarItemsCss = {
     main: {
       padding: "2vw",
@@ -67,7 +71,7 @@ export default function NavbarItems() {
               <RiInstagramFill size={30} />
             </li>
             <li className="item">
-              <ShopBtn title="COMPRAR"/>
+              <ShopBtn title="COMPRAR" url="/shop"/>
             </li>
           </ul>
           <div style={navbarItemsCss.show_btn}>

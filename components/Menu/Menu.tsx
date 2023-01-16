@@ -44,7 +44,7 @@ export default function Menu() {
             <RiInstagramFill size={30} className="mx-auto"/>
           </li>
           <li className="p-4 text-center">
-            <ShopBtn title="COMPRAR" />
+            <ShopBtn title="COMPRAR" url="/shop" />
           </li>
         </ul>
       </div>

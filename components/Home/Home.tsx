@@ -32,12 +32,16 @@ export default function HomePage() {
 
   return (
     <>
-      <HeaderSection />
+      <HeaderSection 
+                url="/honey3.jpg" 
+                title="Join our Family &amp; Enjoy Natures Finest"
+                subtitle="NATURALLY PRODUCED HONEY &amp; BEE PRODUCTS"
+      />
       <HeaderTitle title="What We Offer" />
       <CardContainer cards={cards} />
       <ShopButton title="SHOP ONLINE" />
       <WhoWeAre />
-      <BannerImage />   
+      <BannerImage url="/honey-banner.jpeg"/>   
       <Contact />
       <Footer />  
     </>

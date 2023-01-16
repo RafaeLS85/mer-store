@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import useToggleBtn from "../../hooks/useToggleBtn";
 
 interface Props {
   title: string;
@@ -7,6 +8,13 @@ interface Props {
 
 export default function ShopBtn({ title, url = "" }: Props) {
   const router = useRouter();
+  const { setExpanded, setShow} = useToggleBtn(true)
+
+  const handleClick = () => {
+    router.push(url)
+    setExpanded(false)
+    setShow(false)  
+  }
 
   return (
     <button
@@ -16,10 +24,12 @@ export default function ShopBtn({ title, url = "" }: Props) {
         padding: "1em 1.67em",
         borderRadius: "30px",
         fontSize: "calc((1 - 1) * 1.2vw + 1rem)",
+        textTransform: 'uppercase',
+        fontWeight: 'bold'
       }}
-      onClick={() => router.push(url)}
+      onClick={handleClick}
     >
-      {title}
+      { title }
     </button>
   );
 }
