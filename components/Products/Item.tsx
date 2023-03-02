@@ -42,11 +42,11 @@ export default function Item({
     fontSize: "17px",
   };
 
-  const w50 = isSmallScreen ? "" : "w-1/2";
+  const halfWidth = isSmallScreen ? "" : "w-1/2";
 
   function ImageContainer() {
     return (
-      <div className={`${w50} flex justify-center `}>
+      <div className={`${halfWidth} flex `}>
         <Image
           src="https://picsum.photos/400/400"
           alt="who-we-are"
@@ -57,11 +57,14 @@ export default function Item({
     );
   }
 
+  if(isSmallScreen) textLeft = false
+
   return (
-    <div className="flex p-6 flex-wrap">
+
+    <div className="flex p-6">    
       {!textLeft && <ImageContainer />}
 
-      <div className={`${w50} px-10`}>
+      <div className={`${halfWidth}`}>
         <h1 style={title_style}> {title} </h1>
         <h3 style={subtitle_style}>
           <strong>{subtitle}</strong>
