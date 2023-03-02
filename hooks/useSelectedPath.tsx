@@ -13,7 +13,7 @@ export default function useSelectedPath() {
 
   const getPathFromIndex = (index: number) => {
     const match = items.filter((item) => index === item.id);
-    return match[0].url;
+    return match[0]?.url;
   };
 
   return { setSelectedPath, getPathFromIndex, selectedPath };

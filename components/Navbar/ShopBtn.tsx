@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import useSelectedPath from "../../hooks/useSelectedPath";
 import useToggleBtn from "../../hooks/useToggleBtn";
 
 interface Props {
@@ -7,11 +8,15 @@ interface Props {
 }
 
 export default function ShopBtn({ title, url = "" }: Props) {
-  const router = useRouter();
+  // const router = useRouter();
   const { setExpanded, setShow} = useToggleBtn(true)
+  // const { selectedPath, setSelectedPath, getPathFromIndex } = useSelectedPath()
 
   const handleClick = () => {
-    router.push(url)
+    // agregar flag para saber si se desea redireccionar usando el router o creando una nueva pestaña
+    // router.push(url)
+    window.open (url, '_ blank'); 
+  
     setExpanded(false)
     setShow(false)  
   }

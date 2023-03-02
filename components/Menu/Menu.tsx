@@ -20,7 +20,7 @@ export default function Menu() {
     },
   };
 
-  const handleClick = (item: MenuItems, index: number) => {
+  const handleItemsClick = (item: MenuItems, index: number) => {
     const path = getPathFromIndex(index)
     setSelectedPath(path);
     router.push(item.url);    
@@ -36,7 +36,7 @@ export default function Menu() {
       <div className="flex justify-center bg-[#FEFAF6] h-screen text-[#553605] text-lg uppercase p-6 ">
         <ul>
           {items.map((item, index) => (
-            <li key={item.id} className="p-4 text-center"  onClick={() => handleClick(item, index)}>
+            <li key={item.id} className="p-4 text-center"  onClick={() => handleItemsClick(item, index)}>
               {item.name}
             </li>
           ))}

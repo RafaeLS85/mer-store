@@ -25,9 +25,6 @@ export default function NavbarItems() {
     router.push(item.url);
   };
 
-  
-
-
 
   const navbarItemsCss = {
     main: {
