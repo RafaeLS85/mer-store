@@ -1,13 +1,13 @@
 "use client";
-import Image from "next/image";
-import styles from "./page.module.css";
-import Layout from "@/components/layout/Layout";
+import Card from "@/components/Card/Card";
+import Layout from "@/components/Layout/Layout";
 import useProducts from "@/hooks/useProducts";
 
 export default function Home() {
   const { products } = useProducts();
 
   if (!products.length) return <div className="">Loading...</div>;
+  if (products.length === 0 ) return <div className="">No items to show</div>;
 
   console.log({ products });
 
@@ -15,7 +15,7 @@ export default function Home() {
     <Layout title="Products">
           {products.map((product) => (
             product.description ? 
-            <div key={product.id}>{product.description}</div>
+            <Card key={product.id} item={product} />
             : null
           ))}
     </Layout>

@@ -11,34 +11,19 @@
     padding: 20px;
   }
   
-  .header {
-    grid-area: header;
-    background: red;
-  }
-  
-  .aside {
-    grid-area: aside;
-    background: blue;
-  }
-  
   .section {
     grid-area: section;
-    background: green;
+    background: lightgray;
     display: grid;
     grid-gap: 20px;
     padding: 20px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
   
-  .footer {
-    grid-area: footer;
-    background: yellow;
-  }
-  
   .section div {
     width: 100%;
     height: 100%;
-    background: orange;
+    /* background: orange; */
     display: flex;
     align-items: center;
     justify-content: center;
