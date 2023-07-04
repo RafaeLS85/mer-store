@@ -1,6 +1,8 @@
+import api from "@/services/product";
+import { Product } from "@/types/types";
 import { useState, useEffect, useContext } from "react";
-import api from "../products/service";
-import { Product } from "../products/types";
+
+
 // import { ProductContext } from "../context/ProductContext";
 
 export default function useProducts() {

@@ -1,0 +1,14 @@
+.active {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.inactive {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ul {
+  list-style: none;
+  color: black;
+}

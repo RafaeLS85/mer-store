@@ -1,5 +1,6 @@
+import { Product } from '@/types/types';
 import axios from 'axios'
-import { Product } from "./types";
+
 import Papa from 'papaparse'
 
 const URL = process.env.NEXT_PUBLIC_URL;
