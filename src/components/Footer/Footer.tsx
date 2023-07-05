@@ -1,4 +1,6 @@
 import React from "react";
+import {AiFillFacebook, AiFillInstagram} from 'react-icons/ai'
+import {IoLogoWhatsapp} from 'react-icons/io'
 
 interface Props {
   footerCss: {
@@ -15,9 +17,12 @@ export const Footer = ({ footerCss }: Props) => {
           justifyContent: "center",
           alignItems: "center",
           color: "black",
+          height: '100%'
         }}
       >
-        Footer
+        <AiFillFacebook />
+        <AiFillInstagram />
+        <IoLogoWhatsapp />
       </div>
     </footer>
   );
