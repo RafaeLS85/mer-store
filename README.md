@@ -17,10 +17,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Requirements
 
 1. re-fetch data on file change (https://developers.google.com/apps-script/guides/triggers)
-2. 2 categories 
-3. search products
+2. 2 categories (x)
+3. search products (x)
 4. pagination
-5. filters
+5. filters (x)
 6. Add and remove products on chart.
 7. Purchase section
 
