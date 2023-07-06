@@ -5,14 +5,17 @@ import Layout from "@/components/Layout/Layout";
 import { useSearch } from "@/hooks/useSearch";
 
 export default function Home() {
-  const {data} = useSearch()
-
-  if (!data.length) return <div className="">Loading...</div>;
-  if (data.length === 0) return <div className="">No items to show</div>;
+  const {data, error} = useSearch()
 
   return (
     <Layout title="Products">
       <CategoryStoreInitializer categoryId={0} />
+      {
+        !data && <div>Loading...</div>
+      }
+      {
+        error && <div>{error}</div>
+      }
       {data.map((product) =>
         product.description ? <Card key={product.id} item={product} /> : null
       )}
