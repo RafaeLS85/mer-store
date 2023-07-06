@@ -5,3 +5,10 @@ export const useCategoryStore = create<{
 }>((set) => ({
     categoryId: 0
 }));
+
+
+export const useSearchStore = create<{
+    searchTerm: string;
+}>((set) => ({
+    searchTerm: ''
+}));

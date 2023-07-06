@@ -6,7 +6,7 @@ import Papa from 'papaparse'
 const URL = process.env.NEXT_PUBLIC_URL;
 
 const api = {
-    list: async (categoryId: number): Promise<Product[] | []> => {
+    list: async ({categoryId, searchTerm}: { categoryId: number, searchTerm: string }  ): Promise<Product[] | []> => {
 
         if(!URL) return []
 
@@ -29,11 +29,27 @@ const api = {
                             })))
                         }
 
-                        return resolve( products.map(product => ({
+                        if(!searchTerm){
+                            return resolve( products.map(product => ({
+                                ...product,
+                                price: Number(product.price)
+                            })))
+                        }
+                        const filteredProducts = products.filter(product => product.description.includes(searchTerm) || product.title.includes(searchTerm) )
+
+
+                        if(!filteredProducts){
+
+                            return resolve( products.map(product => ({
+                                ...product,
+                                price: Number(product.price)
+                            })))
+                        }  
+
+                        return resolve( filteredProducts.map(product => ({
                             ...product,
                             price: Number(product.price)
                         })))
-
                         
 
                     },

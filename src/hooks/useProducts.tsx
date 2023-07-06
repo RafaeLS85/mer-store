@@ -1,26 +1,23 @@
 "use client";
 import api from "@/services/product";
-import { useCategoryStore } from "@/store/store";
+import { useCategoryStore, useSearchStore } from "@/store/store";
 import { Product } from "@/types/types";
 import { useState, useEffect, useContext } from "react";
 
 
-// import { ProductContext } from "../context/ProductContext";
-
 export default function useProducts() {
   const { categoryId } = useCategoryStore()
+  const { searchTerm } = useSearchStore()
  
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    
-      api.list(categoryId).then((res) => {       
+      api.list({categoryId, searchTerm}).then((res) => {       
         setProducts(res)
       });
-
       console.log("category change", categoryId)
-    
-  }, [categoryId]);
+      console.log("search term change", searchTerm)
+  }, [categoryId, searchTerm]);
 
   return { products, setProducts };
 }
