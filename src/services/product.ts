@@ -1,63 +1,50 @@
-import { Product } from '@/types/types';
-import axios from 'axios'
+import { Product } from "@/types/types";
+import axios from "axios";
 
-import Papa from 'papaparse'
+import Papa from "papaparse";
 
 const URL = process.env.NEXT_PUBLIC_URL;
 
 const api = {
-    list: async ({categoryId, searchTerm}: { categoryId: number, searchTerm: string }  ): Promise<Product[] | []> => {
+  list: async ({
+    categoryId,
+  }: {
+    categoryId: number;
+  }): Promise<Product[] | []> => {
+    if (!URL) return [];
 
-        if(!URL) return []
+    return axios.get(URL, { responseType: "blob" }).then((res) => {
+      return new Promise<Product[]>((resolve, reject) => {
+        Papa.parse(res.data, {
+          header: true,
+          complete: (results) => {
+            const products = results.data as Product[];
 
-        return axios
-        .get(URL, { responseType: 'blob'})
-        .then(res => {
-            return new Promise<Product[]>((resolve, reject) => {
-                Papa.parse(res.data, {
-                    header: true,
-                    complete: results => {
+            if (categoryId !== 0) {
+              const filteredProducts = products.filter(
+                (product) => product.category === String(categoryId)
+              );
 
-                        const products = results.data as Product[]
+              return resolve(
+                filteredProducts.map((product) => ({
+                  ...product,
+                  price: Number(product.price),
+                }))
+              );
+            }
 
-                        if(categoryId !== 0) {
-                            const filteredProducts = products.filter(product => product.category === String(categoryId))           
-
-                            return resolve( filteredProducts.map(product => ({
-                                ...product,
-                                price: Number(product.price)
-                            })))
-                        }
-
-                        if(!searchTerm){
-                            return resolve( products.map(product => ({
-                                ...product,
-                                price: Number(product.price)
-                            })))
-                        }
-                        const filteredProducts = products.filter(product => product.description.includes(searchTerm) || product.title.includes(searchTerm) )
-
-
-                        if(!filteredProducts){
-
-                            return resolve( products.map(product => ({
-                                ...product,
-                                price: Number(product.price)
-                            })))
-                        }  
-
-                        return resolve( filteredProducts.map(product => ({
-                            ...product,
-                            price: Number(product.price)
-                        })))
-                        
-
-                    },
-                    error: error => reject(error.message),
-                })
-            })
-        })
-    }
-}
+            return resolve(
+              products.map((product) => ({
+                ...product,
+                price: Number(product.price),
+              }))
+            );
+          },
+          error: (error) => reject(error.message),
+        });
+      });
+    });
+  },
+};
 
 export default api;

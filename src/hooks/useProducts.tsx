@@ -12,12 +12,12 @@ export default function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-      api.list({categoryId, searchTerm}).then((res) => {       
+      api.list({categoryId}).then((res) => {       
         setProducts(res)
       });
       console.log("category change", categoryId)
-      console.log("search term change", searchTerm)
-  }, [categoryId, searchTerm]);
+      // console.log("search term change", searchTerm)
+  }, [categoryId]);
 
   return { products, setProducts };
 }

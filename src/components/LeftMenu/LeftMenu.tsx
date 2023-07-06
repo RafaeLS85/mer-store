@@ -25,10 +25,10 @@ export const LeftMenu = ({ asideCss }: Props) => {
   };
 
   const handleKeyDown = (event: any) => {
-    console.log("User pressed: ", event.key);
-    console.log("input value: ", inputValue);
+    // console.log("User pressed: ", event.key);
+    // console.log("input value: ", inputValue);
     if (event.key === "Enter") {
-      console.log("✅ Enter key pressed");
+      // console.log("✅ Enter key pressed");
       useSearchStore.setState({ searchTerm: inputValue });
     }
   };
