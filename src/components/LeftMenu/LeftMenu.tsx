@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./leftmenu.module.css";
+import { useCategoryStore } from '@/store/store'
 interface Props {
   asideCss: {
     aside: {};
@@ -9,15 +10,16 @@ interface Props {
 
 export const LeftMenu = ({ asideCss }: Props) => {
   const items = [
-    { id: 1, name: "Todos los productos" },
-    { id: 2, name: "Miel" },
-    { id: 3, name: "Tejidos" },
+    { id: 0, name: "Todos los productos" },
+    { id: 1, name: "Miel" },
+    { id: 2, name: "Tejidos" },
   ];
 
   const [active, setActive] = useState(1);
 
   const updateItems = (i: number) => {
-    setActive(i + 1);
+    setActive(i);
+    useCategoryStore.setState({ categoryId: i }); 
   };
 
   return (
@@ -29,7 +31,7 @@ export const LeftMenu = ({ asideCss }: Props) => {
             key={item.id}
             onClick={() => updateItems(index)}
             className={`${
-              active === index + 1 ? styles.active : styles.inactive
+              active === index ? styles.active : styles.inactive
             }`}
           >
             {item.name}

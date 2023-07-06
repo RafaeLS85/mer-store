@@ -15,19 +15,19 @@ export default function Layout({ title, children }: Props) {
   const headerCss = {
     header: {
       gridArea: "header",
-      background: "lightgray",
+      background: "#313537",
     },
   };
   const asideCss = {
     aside: {
       gridArea: "aside",
-      background: "lightgray",
+      background: "#313537",
     },
   };
   const footerCss = {
     footer: {
       gridArea: "footer",
-      background: "lightgray",
+      background: "#313537",
     },
   };
 

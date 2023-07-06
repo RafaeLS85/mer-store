@@ -1,4 +1,4 @@
-import { Product } from "@/products/types";
+import { Product } from "@/types/types";
 import Image from "next/image";
 
 
@@ -15,7 +15,7 @@ export default function Card({item}: Props) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: "#F2AB10",
+        backgroundColor: "#aa5a2c",
         color: "#FFF",
 
     }} onClick={() => console.log('click')}>

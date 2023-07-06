@@ -14,7 +14,7 @@
 
 .section {
   grid-area: section;
-  background: lightgray;
+  background: #313537;
   display: grid;
   grid-gap: 20px;
   padding: 20px;
