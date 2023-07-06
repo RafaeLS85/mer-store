@@ -15,7 +15,7 @@ export const LeftMenu = ({ asideCss }: Props) => {
     { id: 2, name: "Tejidos" },
   ];
 
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
 
   const updateItems = (i: number) => {
     setActive(i);
