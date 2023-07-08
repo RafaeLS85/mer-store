@@ -1,26 +1,37 @@
+"use client";
 import { Product } from "@/types/types";
 import Image from "next/image";
-
+import Link from "next/link";
 
 interface Props {
-    item: Product
+  item: Product;
 }
 
+export default function Card({ item }: Props) {
+  const { id, title, image, description, category, price } = item;
 
-export default function Card({item}: Props) {
-  const { id, title, image, description,category, price  } = item;
+  const CardComponent = () => {
+    return (
+      <>
+        <Image src={image} alt={title} width={150} height={150} priority />
+        <div style={Object.assign({})}>{description}</div>
+      </>
+    );
+  };
 
   return (
-    <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundColor: "#aa5a2c",
-        color: "#FFF",
-
-    }} onClick={() => console.log('click')}>
-      <Image src={image} alt={title} width={150} height={150} priority />
-      <div style={Object.assign({})}>{description}</div>
-    </div>
+    <Link href={`/product/${id}`}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          backgroundColor: "#aa5a2c",
+          color: "#FFF",
+        }}
+      >
+        <CardComponent />
+      </div>
+    </Link>
   );
 }

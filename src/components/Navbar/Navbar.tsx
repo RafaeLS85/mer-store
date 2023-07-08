@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { FiShoppingCart } from 'react-icons/fi'
+import { FiShoppingCart } from "react-icons/fi";
 
 interface Props {
   headerCss: {
@@ -9,6 +10,8 @@ interface Props {
 }
 
 export const Navbar = ({ headerCss }: Props) => {
+ 
+
   return (
     <header style={Object.assign(headerCss.header)}>
       <div
@@ -19,13 +22,22 @@ export const Navbar = ({ headerCss }: Props) => {
         }}
       >
         <div>
-          <Image src="/logo-example2.png" width={150} height={50} alt="logo" />
+          <Link href="/">
+            <Image
+              src="/logo-example2.png"
+              width={150}
+              height={50}
+              alt="logo"
+            />
+          </Link>
         </div>
 
-        <div style={{display: 'flex', gap:'12px', color: 'black'  }}>
+        <div style={{ display: "flex", gap: "12px", color: "black" }}>
           <div>Login</div>
           <div>Logout</div>
-          <div><FiShoppingCart /></div>
+          <div>
+            <FiShoppingCart />
+          </div>
         </div>
       </div>
     </header>
