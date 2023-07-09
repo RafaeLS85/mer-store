@@ -86,6 +86,10 @@ body {
   overflow-x: hidden;
 }
 
+table {
+  width: 100%;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: #171D25;

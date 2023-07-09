@@ -1,3 +1,4 @@
+import { useChartStore } from "@/store/store";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +12,7 @@ interface Props {
 
 export const Navbar = ({ headerCss }: Props) => {
  
-
+  const { products } = useChartStore()
   return (
     <header style={Object.assign(headerCss.header)}>
       <div
@@ -36,7 +37,24 @@ export const Navbar = ({ headerCss }: Props) => {
           <div>Login</div>
           <div>Logout</div>
           <div>
-            <FiShoppingCart />
+            <Link href="/checkout">
+              <div style={{
+                display: 'flex' 
+              }}>
+
+                <FiShoppingCart size={25} />
+                
+                <span style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  background:  'lightgray',
+                  borderRadius: '100%',
+                  width: '24px',
+                  color: 'blue',
+                  fontWeight: 'bolder' 
+                }} >{products.length}</span>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

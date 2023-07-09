@@ -4,14 +4,17 @@ import useProducts from "@/hooks/useProducts";
 import { Product } from "@/types/types";
 import Image from "next/image";
 import { BiSolidCartAdd } from "react-icons/bi";
+import { useRouter } from "next/navigation";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const { products } = useProducts();
+  const router = useRouter();
 
   const product = products.find((product) => product.id === params.slug);
 
   const toCheckout = () => {
     console.log("checkout");
+    router.push("/checkout");
   };
 
   const addToChart = () => {

@@ -1,4 +1,5 @@
 "use client";
+import { useChartStore } from "@/store/store";
 import { Product } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,18 +12,29 @@ interface Props {
 export default function Card({ item }: Props) {
   const { id, title, image, description, price, stock } = item;
 
+  const { products, user, total} = useChartStore()
+
   const addToChart = () => {
     console.log("add to chart");
+    // const newProduct: Product[] = products.push(item)
+    console.log({item})
+    console.log({products})
+    useChartStore.setState({ products: [... products, item] });
   };
 
   const CardComponent = () => {
     return (
       <>
-      <div style={{padding: '10px'}}>
-        <Link href={`/product/${id}`}>
-          <Image src={image} alt={title} width={150} height={150} priority />
-        </Link>
-      </div>
+        <div
+          style={{
+            padding: "10px",
+            pointerEvents: !stock ? "none" : "unset",
+          }}
+        >
+          <Link href={`/product/${id}`}>
+            <Image src={image} alt={title} width={150} height={150} priority />
+          </Link>
+        </div>
         <div style={{ padding: "1rem" }}>{description.toUpperCase()}</div>
         <StockComponent stock={stock} />
       </>
@@ -30,13 +42,15 @@ export default function Card({ item }: Props) {
   };
 
   const StockComponent = ({ stock }: { stock: number }) => {
-    if (!stock) return <div style={{ padding: "1rem", color: 'yellow' }}>Agotado</div>;
+    if (!stock)
+      return <div style={{ padding: "1rem", color: "yellow" }}>Agotado</div>;
     return <div style={{ padding: "1rem" }}>Disponibles: {stock}</div>;
   };
 
   const AddBtn = () => {
     return (
       <button
+        disabled={!Boolean(stock)}
         style={{
           display: "flex",
           alignItems: "flex-end",
@@ -56,10 +70,12 @@ export default function Card({ item }: Props) {
 
   const Footer = () => {
     return (
-      <div style={{
-        background: 'gray', 
-        padding: '10px' 
-      }}>
+      <div
+        style={{
+          background: "gray",
+          padding: "10px",
+        }}
+      >
         <div>$ {price}</div>
 
         <AddBtn />
@@ -76,7 +92,7 @@ export default function Card({ item }: Props) {
         backgroundColor: "#aa5a2c",
         color: "#FFF",
         opacity: stock ? "" : "0.7",
-        maxHeight: "370px"
+        maxHeight: "370px",
       }}
     >
       <CardComponent />
