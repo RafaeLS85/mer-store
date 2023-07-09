@@ -5,11 +5,12 @@ import { Product } from "@/types/types";
 import Image from "next/image";
 import { BiSolidCartAdd } from "react-icons/bi";
 import { useRouter } from "next/navigation";
+import { useChartStore } from "@/store/store";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const { products } = useProducts();
   const router = useRouter();
-
+  const { products: data } = useChartStore()
   const product = products.find((product) => product.id === params.slug);
 
   const toCheckout = () => {
@@ -19,6 +20,9 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   const addToChart = () => {
     console.log("add to chart");
+    if(product){
+      useChartStore.setState({ products: [...data, product] });
+    }
   };
 
   const DetailComponent = (product: Product) => {

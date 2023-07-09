@@ -1,5 +1,5 @@
 "use client";
-import { useChartStore } from "@/store/store";
+import { calculateTotal, useChartStore } from "@/store/store";
 import { Product } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,14 +12,23 @@ interface Props {
 export default function Card({ item }: Props) {
   const { id, title, image, description, price, stock } = item;
 
-  const { products, user, total} = useChartStore()
+  const { products, total} = useChartStore()
+
+  calculateTotal
 
   const addToChart = () => {
     console.log("add to chart");
     // const newProduct: Product[] = products.push(item)
     console.log({item})
     console.log({products})
-    useChartStore.setState({ products: [... products, item] });
+    useChartStore.setState({ products: [...products, item] });
+
+    if(products){
+
+      useChartStore.setState({ total: calculateTotal(products) })
+    }
+
+
   };
 
   const CardComponent = () => {
