@@ -6,6 +6,7 @@ import { useSearch } from "@/hooks/useSearch";
 
 export default function Home() {
   const {data, error} = useSearch()
+  console.log({data})
 
   return (
     <Layout title="Products">

@@ -5,6 +5,7 @@ export type Product = {
   description: string;
   image: string;
   price: number;
+  stock: number;
 };
 
 export type User = {

@@ -29,6 +29,7 @@ const api = {
                 filteredProducts.map((product) => ({
                   ...product,
                   price: Number(product.price),
+                  stock: Number(product.stock),
                 }))
               );
             }
@@ -37,6 +38,7 @@ const api = {
               products.map((product) => ({
                 ...product,
                 price: Number(product.price),
+                stock: Number(product.stock),
               }))
             );
           },
