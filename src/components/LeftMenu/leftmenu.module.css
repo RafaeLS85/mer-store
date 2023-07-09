@@ -12,3 +12,9 @@
   list-style: none;
   color: black;
 }
+
+.aside {
+  padding: 1rem;
+  line-height: 2rem;
+
+}

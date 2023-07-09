@@ -45,6 +45,36 @@ const api = {
       });
     });
   },
+  get: async ({
+    productId,
+  }: {
+    productId: number;
+  }): Promise<Product[] | []> => {
+    if (!URL) return [];
+
+    return axios.get(URL, { responseType: "blob" }).then((res) => {
+      return new Promise<Product[]>((resolve, reject) => {
+        Papa.parse(res.data, {
+          header: true,
+          complete: (results) => {
+            const products = results.data as Product[];
+
+            const product = products.filter(
+              (product) => product.id === String(productId)
+            );
+
+            return resolve(
+              product.map((product) => ({
+                ...product,
+                price: Number(product.price),
+              }))
+            );
+          },
+          error: (error) => reject(error.message),
+        });
+      });
+    });
+  },
 };
 
 export default api;

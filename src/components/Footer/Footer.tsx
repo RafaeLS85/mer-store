@@ -17,12 +17,13 @@ export const Footer = ({ footerCss }: Props) => {
           justifyContent: "center",
           alignItems: "center",
           color: "black",
-          height: '100%'
+          height: '100%',
+          gap: '1rem' 
         }}
       >
-        <AiFillFacebook />
-        <AiFillInstagram />
-        <IoLogoWhatsapp />
+        <AiFillFacebook  size={25}/>
+        <AiFillInstagram size={25}/>
+        <IoLogoWhatsapp size={25}/>
       </div>
     </footer>
   );

@@ -29,16 +29,13 @@ export const LeftMenu = ({ asideCss }: Props) => {
   };
 
   const handleKeyDown = (event: any) => {
-    // console.log("User pressed: ", event.key);
-    // console.log("input value: ", inputValue);
     if (event.key === "Enter") {
-      // console.log("✅ Enter key pressed");
       useSearchStore.setState({ searchTerm: inputValue });
     }
   };
 
   return (
-    <aside style={Object.assign(asideCss.aside)}>
+    <aside style={Object.assign(asideCss.aside)} className={styles.aside}>
       <input
         type="search"
         placeholder="Buscar productos"

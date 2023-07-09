@@ -32,7 +32,7 @@ export const Navbar = ({ headerCss }: Props) => {
           </Link>
         </div>
 
-        <div style={{ display: "flex", gap: "12px", color: "black" }}>
+        <div style={{ display: "flex", gap: "12px", color: "black", marginRight: '1rem' }}>
           <div>Login</div>
           <div>Logout</div>
           <div>

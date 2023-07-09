@@ -2,6 +2,7 @@
 import { Product } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
+import { BiSolidCartAdd } from "react-icons/bi";
 
 interface Props {
   item: Product;
@@ -10,28 +11,43 @@ interface Props {
 export default function Card({ item }: Props) {
   const { id, title, image, description, category, price } = item;
 
+  const addToChart = () => {
+    console.log("add to chart");
+  };
+
   const CardComponent = () => {
     return (
       <>
-        <Image src={image} alt={title} width={150} height={150} priority />
+        <Link href={`/product/${id}`}>
+          <Image src={image} alt={title} width={150} height={150} priority />
+        </Link>
         <div style={Object.assign({})}>{description}</div>
       </>
     );
   };
 
   return (
-    <Link href={`/product/${id}`}>
-      <div
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "#aa5a2c",
+        color: "#FFF",
+      }}
+    >
+      <button
         style={{
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          backgroundColor: "#aa5a2c",
-          color: "#FFF",
+          alignItems: "flex-end",
+          justifyContent: "flex-end",
         }}
+        onClick={addToChart}
       >
-        <CardComponent />
-      </div>
-    </Link>
+        <BiSolidCartAdd size={40} style={{ background: "#6C9018" }} />
+      </button>
+
+      <CardComponent />
+    </div>
   );
 }
