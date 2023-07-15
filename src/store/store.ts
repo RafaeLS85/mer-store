@@ -15,19 +15,18 @@ export const useSearchStore = create<{
 }));
 
 
-export const calculateTotal = (items: Product[]) => {
-    let reduce = items.reduce((acc, item) => acc + item.price, 0);
-    console.log(reduce)
 
-    return reduce
-}
 
 export const useChartStore = create<{
-    user: string;
     products: Product[]
-    total: number;
 }>((set) => ({
-    user: 'user',
     products: [],
-    total: 0
+}));
+
+
+
+export const useChartStore2 = create<{
+    products: Product[]
+}>((set) => ({
+    products: [],
 }));

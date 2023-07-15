@@ -17,5 +17,4 @@ export const META = {
     },
   };
 
-  export const mediaQueryNav = '(max-width: 850px)'
-  export const mediaQueryMobile = '(max-width: 400px)'
+  export const PHONE_NUMBER = '+5493415559540'

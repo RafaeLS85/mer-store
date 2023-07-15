@@ -1,8 +1,10 @@
 "use client";
-import { calculateTotal, useChartStore } from "@/store/store";
+// import { useCart } from "@/hooks/useCart";
+import { useChartStore } from "@/store/store";
 import { Product } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { BiSolidCartAdd } from "react-icons/bi";
 
 interface Props {
@@ -12,23 +14,10 @@ interface Props {
 export default function Card({ item }: Props) {
   const { id, title, image, description, price, stock } = item;
 
-  const { products, total} = useChartStore()
-
-  calculateTotal
+  const { products } = useChartStore();
 
   const addToChart = () => {
-    console.log("add to chart");
-    // const newProduct: Product[] = products.push(item)
-    console.log({item})
-    console.log({products})
-    useChartStore.setState({ products: [...products, item] });
-
-    if(products){
-
-      useChartStore.setState({ total: calculateTotal(products) })
-    }
-
-
+    useChartStore.setState({ products: products.concat(item) });
   };
 
   const CardComponent = () => {
@@ -40,12 +29,13 @@ export default function Card({ item }: Props) {
             pointerEvents: !stock ? "none" : "unset",
           }}
         >
-          <Link href={`/product/${id}`}>
-            <Image src={image} alt={title} width={150} height={150} priority />
-          </Link>
+          {/* <Link href={`/product/${id}`}> */}
+          <Image src={image} alt={title} width={150} height={150} priority />
+          {/* </Link> */}
         </div>
         <div style={{ padding: "1rem" }}>{description.toUpperCase()}</div>
         <StockComponent stock={stock} />
+        <div>$ {price} ARS</div>
       </>
     );
   };
@@ -62,17 +52,21 @@ export default function Card({ item }: Props) {
         disabled={!Boolean(stock)}
         style={{
           display: "flex",
-          alignItems: "flex-end",
-          justifyContent: "flex-end",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100vw",
+          background: "#6C9018",
+          padding: "10px",
         }}
         onClick={addToChart}
       >
-        <BiSolidCartAdd
+        {/* <BiSolidCartAdd
           size={40}
           width={100}
           height={100}
           style={{ background: "#6C9018" }}
-        />
+        /> */}
+        AGREGAR
       </button>
     );
   };
@@ -85,8 +79,6 @@ export default function Card({ item }: Props) {
           padding: "10px",
         }}
       >
-        <div>$ {price}</div>
-
         <AddBtn />
       </div>
     );
@@ -98,7 +90,7 @@ export default function Card({ item }: Props) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: "#aa5a2c",
+        backgroundColor: "rgb(98 157 150)",
         color: "#FFF",
         opacity: stock ? "" : "0.7",
         maxHeight: "370px",

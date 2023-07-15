@@ -16,13 +16,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Requirements
 
-1. re-fetch data on file change (https://developers.google.com/apps-script/guides/triggers)
-2. 2 categories (x)
-3. search products (x)
-4. pagination
-5. filters (x)
-6. Add and remove products on chart.
-7. Purchase section
+1. re-fetch data on file change (https://developers.google.com/apps-script/guides/triggers) (not implemented)
+2. search products (done)
+3. categories (done)
+4. pagination (not implemented)
+5. filters by category (done)
+6. Add and remove products on chart. (done)
+7. Purchase section (done)
+8. Save products on local storage. (not implemented)
 
 ### Optionals
 1. User login.
