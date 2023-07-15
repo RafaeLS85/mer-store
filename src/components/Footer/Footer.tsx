@@ -25,6 +25,15 @@ export const Footer = ({ footerCss }: Props) => {
         <AiFillInstagram size={25}/>
         <IoLogoWhatsapp size={25}/>
       </div>
+      <div  style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          fontSize: "12px",
+          
+        }}>
+        v1.4.1
+      </div>
     </footer>
   );
 };

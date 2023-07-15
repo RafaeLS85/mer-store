@@ -15,20 +15,22 @@ export default function CheckoutPage() {
   // debajo debe mostrar el total a pagar y un boton para realizar el pedido por whatsapp
 
   const { products } = useChartStore();
- 
+
   const text = useMemo(() => {
     return products
       .reduce(
         (message, product) =>
-          message.concat(`* ${product.title} -  ${ parseCurrency(product.price) }\n`),
+          message.concat(
+            `* ${product.title} -  ${parseCurrency(product.price)}\n`
+          ),
         ``
       )
       .concat(
-        `\nTotal: ${parseCurrency(products.reduce((total, product) => total + product.price, 0))}`
+        `\nTotal: ${parseCurrency(
+          products.reduce((total, product) => total + product.price, 0)
+        )}`
       );
   }, [products]);
-
-  
 
   return (
     <Layout title="Checkout page">
@@ -38,7 +40,6 @@ export default function CheckoutPage() {
           gap: "2rem",
 
           gridColumn: "1/-1",
-          
         }}
       >
         <h1>Mi Pedido</h1>
@@ -49,28 +50,34 @@ export default function CheckoutPage() {
           Total: {products.reduce((total, product) => total + product.price, 0)}
         </div>
 
-         <Link style={{pointerEvents: !Boolean(products.length) ? "none" : "unset",}}
-        href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(text)}`}
-      >
-        <button
-          disabled={!Boolean(products.length)}
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
-            
-            background: "#6C9018",
-            borderRadius: "10px",
-            padding: "1rem",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "1rem",
-            opacity: Boolean(products.length) ? "1" : "0.5",
+            pointerEvents: !Boolean(products.length) ? "none" : "unset",
           }}
+          href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
+            text
+          )}`}
         >
-          <div>Hacer el pedido </div>
+          <button
+            disabled={!Boolean(products.length)}
+            style={{
+              background: "#6C9018",
+              borderRadius: "10px",
+              padding: "1rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "1rem",
+              opacity: Boolean(products.length) ? "1" : "0.5",
+            }}
+          >
+            <div>Hacer el pedido </div>
 
-          <IoLogoWhatsapp size={25} />
-        </button>
-      </Link>
+            <IoLogoWhatsapp size={25} />
+          </button>
+        </a>
       </div>
     </Layout>
   );
