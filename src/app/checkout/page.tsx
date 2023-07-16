@@ -1,7 +1,7 @@
 "use client";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { CheckoutTable } from "../../components/Checkout/CheckoutTable";
-import Layout from "../../components/Layout/Layout";
+import { CheckoutTable } from "../../components/checkout/Table";
+import Layout from "../../components/layout/Layout";
 import { PHONE_NUMBER } from "../../constants/config";
 import { useChartStore } from "../../store/store";
 import { parseCurrency } from "../../utils";

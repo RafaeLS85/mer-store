@@ -2,9 +2,12 @@ import Head from "next/head";
 import React from "react";
 import { META } from "../../constants/config";
 import styles from "./layout.module.css";
-import { Navbar } from "../Navbar/Navbar";
-import { LeftMenu } from "../LeftMenu/LeftMenu";
-import { Footer } from "../Footer/Footer";
+import { Navbar } from "../navbar/Navbar";
+
+
+import { LeftMenu } from "../leftmenu/LeftMenu";
+import { Footer } from "../footer/Footer";
+
 
 interface Props {
   title: string;
