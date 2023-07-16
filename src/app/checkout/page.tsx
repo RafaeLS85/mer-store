@@ -42,7 +42,7 @@ export default function CheckoutPage() {
         <CheckoutTable products={products} />
 
         <div>
-          Total: {products.reduce((total, product) => total + product.price, 0)}
+          Total: ${products.reduce((total, product) => total + product.price, 0)}
         </div>
 
         <a

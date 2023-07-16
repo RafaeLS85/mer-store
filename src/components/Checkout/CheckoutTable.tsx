@@ -4,7 +4,7 @@ import styles from "./chart.module.css";
 import { IoMdAddCircle } from "react-icons/io";
 import { BiSolidMinusCircle } from "react-icons/bi";
 import { useChartStore } from "@/store/store";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 
 export const CheckoutTable = ({ products }: { products: Product[] }) => {
   const { products: data } = useChartStore();
@@ -13,13 +13,13 @@ export const CheckoutTable = ({ products }: { products: Product[] }) => {
   //   return products.filter((p) => p.id === id).length;
   // };
 
-  const notify = () =>
-    toast("Toast is good", {
-      hideProgressBar: true,
-      autoClose: 2000,
-      type: "success",
-      position: "bottom-right",
-    });
+  // const notify = () =>
+  //   toast("Toast is good", {
+  //     hideProgressBar: true,
+  //     autoClose: 2000,
+  //     type: "success",
+  //     position: "bottom-right",
+  //   });
 
   if (!products.length) return <div>No items</div>;
 
@@ -61,14 +61,8 @@ export const CheckoutTable = ({ products }: { products: Product[] }) => {
             key={product.id + Math.random()}
             style={{ width: "2rem", padding: "1rem", margin: "2rem" }}
           >
-            {product.price}
+            ${product.price}
           </td>
-          {/* <td
-            key={product.id + Math.random()}
-            style={{ width: "2rem", padding: "1rem", margin: "2rem" }}
-          >
-            {cuantity(product.id)}
-          </td> */}
           <td
             key={product.id + Math.random()}
             style={{ width: "2rem", padding: "1rem", margin: "2rem" }}
@@ -85,28 +79,11 @@ export const CheckoutTable = ({ products }: { products: Product[] }) => {
               onClick={() => handleRemove(index)}
             >
               <BiSolidMinusCircle style={{ background: "#b11f1f" }} size={20} />
-            </button>
-
-            {/* <button 
-             onClick={ () => handleAdd(product)}
-            style={{
-              background: '#6C9018', 
-              width: '1.5rem', 
-              marginRight: '1rem' , 
-              borderRadius: '50%' 
-              }}
-              >+</button>
-            <button 
-            onClick={ () => handleRemove(index)}
-            style={{ 
-              background: '#b11f1f', 
-              width: '1.5rem', 
-              borderRadius: '50%' 
-              }}>-</button> */}
+            </button>       
           </td>
         </tr>
       ))}
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </table>
   );
 };
