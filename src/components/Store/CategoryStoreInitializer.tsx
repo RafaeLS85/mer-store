@@ -1,6 +1,6 @@
 "use client";
 
-import { useCategoryStore } from "@/store/store";
+import { useCategoryStore } from "../../store/store";
 import { useRef } from "react";
 
 export const CategoryStoreInitializer = ({

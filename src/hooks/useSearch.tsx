@@ -1,7 +1,7 @@
-import { Product } from "@/types/types";
+import { Product } from "../types/types";
 import React, { useState, useEffect } from "react";
 import useProducts from "./useProducts";
-import { useSearchStore } from "@/store/store";
+import { useSearchStore } from "../store/store";
 
 export const useSearch = () => {
   const { products } = useProducts();

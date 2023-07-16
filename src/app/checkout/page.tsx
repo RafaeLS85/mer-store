@@ -1,11 +1,10 @@
 "use client";
-
-import { CheckoutTable } from "@/components/Checkout/CheckoutTable";
-import Layout from "@/components/Layout/Layout";
-import { PHONE_NUMBER } from "@/constants/config";
-import { useChartStore } from "@/store/store";
-import { parseCurrency } from "@/utils";
 import { IoLogoWhatsapp } from "react-icons/io";
+import { CheckoutTable } from "../../components/Checkout/CheckoutTable";
+import Layout from "../../components/Layout/Layout";
+import { PHONE_NUMBER } from "../../constants/config";
+import { useChartStore } from "../../store/store";
+import { parseCurrency } from "../../utils";
 
 export default function CheckoutPage() {
   // comnponente que muestra una tabla donde se listan los productos, se debe poder agregar, restar y eliminar productos.

@@ -1,4 +1,4 @@
-import { Product } from "@/types/types";
+import { Product } from "../types/types";
 import axios from "axios";
 
 import Papa from "papaparse";

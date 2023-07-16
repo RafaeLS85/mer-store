@@ -1,7 +1,7 @@
 "use client";
-import api from "@/services/product";
-import { useCategoryStore } from "@/store/store";
-import { Product } from "@/types/types";
+import api from "../services/product";
+import { useCategoryStore } from "../store/store";
+import { Product } from "../types/types";
 import { useState, useEffect } from "react";
 
 export default function useProducts() {

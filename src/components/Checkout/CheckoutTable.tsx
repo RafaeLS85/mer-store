@@ -1,9 +1,9 @@
 "use client";
-import { Product } from "@/types/types";
+import { Product } from "../../types/types";
 import styles from "./chart.module.css";
 import { IoMdAddCircle } from "react-icons/io";
 import { BiSolidMinusCircle } from "react-icons/bi";
-import { useChartStore } from "@/store/store";
+import { useChartStore } from "../../store/store";
 // import { ToastContainer, toast } from "react-toastify";
 
 export const CheckoutTable = ({ products }: { products: Product[] }) => {

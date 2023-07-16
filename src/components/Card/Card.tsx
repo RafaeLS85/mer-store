@@ -1,11 +1,11 @@
 "use client";
 // import { useCart } from "@/hooks/useCart";
-import { useChartStore } from "@/store/store";
-import { Product } from "@/types/types";
+import { useChartStore } from "../../store/store";
+import { Product } from "../../types/types";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { BiSolidCartAdd } from "react-icons/bi";
+// import Link from "next/link";
+// import { useState } from "react";
+// import { BiSolidCartAdd } from "react-icons/bi";
 
 interface Props {
   item: Product;

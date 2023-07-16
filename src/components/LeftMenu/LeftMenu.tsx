@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./leftmenu.module.css";
-import { useCategoryStore, useSearchStore } from "@/store/store";
+import { useCategoryStore, useSearchStore } from "../../store/store";
 import { useRouter } from "next/navigation";
 
 interface Props {
