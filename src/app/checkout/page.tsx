@@ -4,10 +4,7 @@ import { CheckoutTable } from "@/components/Checkout/CheckoutTable";
 import Layout from "@/components/Layout/Layout";
 import { PHONE_NUMBER } from "@/constants/config";
 import { useChartStore } from "@/store/store";
-
 import { parseCurrency } from "@/utils";
-import Link from "next/link";
-import { useMemo } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 
 export default function CheckoutPage() {
@@ -16,21 +13,19 @@ export default function CheckoutPage() {
 
   const { products } = useChartStore();
 
-  const text = useMemo(() => {
-    return products
-      .reduce(
-        (message, product) =>
-          message.concat(
-            `* ${product.title} -  ${parseCurrency(product.price)}\n`
-          ),
-        ``
-      )
-      .concat(
-        `\nTotal: ${parseCurrency(
-          products.reduce((total, product) => total + product.price, 0)
-        )}`
-      );
-  }, [products]);
+  const text = products
+    .reduce(
+      (message, product) =>
+        message.concat(
+          `* ${product.title} -  ${parseCurrency(product.price)}\n`
+        ),
+      ``
+    )
+    .concat(
+      `\nTotal: ${parseCurrency(
+        products.reduce((total, product) => total + product.price, 0)
+      )}`
+    );
 
   return (
     <Layout title="Checkout page">

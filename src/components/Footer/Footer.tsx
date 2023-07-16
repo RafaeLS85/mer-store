@@ -32,7 +32,7 @@ export const Footer = ({ footerCss }: Props) => {
           fontSize: "12px",
           
         }}>
-        v1.4.1
+        v1.4.2
       </div>
     </footer>
   );
