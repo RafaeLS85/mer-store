@@ -6,9 +6,9 @@ export const META = {
     description: "Ahorrá tiempo y dinero aceptando pedidos online con MerStore",
     appleicon: "/logo192.jpg",
     keywords: "tienda, online, fácil, delivery, compra, venta",
-    author: "Pency",
+    author: "Rafaels85",
     twitter: "@mer",
-    url: "https://la-tiend-de-mer.com",
+    url: "https://la-tienda-de-mer.com",
     banner: {
       url: "/og-image.jpg",
       format: "image/jpeg",
