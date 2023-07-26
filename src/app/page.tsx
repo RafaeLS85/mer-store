@@ -4,9 +4,10 @@
 
 import { useSearch } from "../hooks/useSearch";
 import 'react-toastify/dist/ReactToastify.css';
-import Card from "@/components/card/Card";
+
 import { CategoryStoreInitializer } from "@/components/store/CategoryStoreInitializer";
-import Layout from "@/components/layout/Layout";
+import Layout from "@/components/Layout";
+import Card from "@/components/Card";
 // import { ToastContainer } from 'react-toastify';
 export default function Home() {
   const { data, error } = useSearch();
