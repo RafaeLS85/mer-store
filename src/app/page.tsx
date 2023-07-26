@@ -5,7 +5,7 @@
 import { useSearch } from "../hooks/useSearch";
 import 'react-toastify/dist/ReactToastify.css';
 
-import { CategoryStoreInitializer } from "@/components/store/CategoryStoreInitializer";
+import { CategoryStoreInitializer } from "@/components/store";
 import Layout from "@/components/Layout";
 import Card from "@/components/Card";
 // import { ToastContainer } from 'react-toastify';
