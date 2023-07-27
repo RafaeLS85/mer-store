@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 6. Add and remove products on chart. (done)
 7. Purchase section (done)
 8. Save products on local storage. (not implemented)
-
+9. Design (not implemented) (https://alcaparras.com.ar/)
 ### Optionals
 1. User login.
 
