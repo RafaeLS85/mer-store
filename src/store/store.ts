@@ -25,8 +25,14 @@ export const useChartStore = create<{
 
 
 
-export const useChartStore2 = create<{
-    products: Product[]
+export const useModal = create<{
+    isOpen: boolean,
+    item?: Product
 }>((set) => ({
-    products: [],
+    isOpen: false
+}));
+
+export const useDetail = create<{
+    item?: Product
+}>((set) => ({
 }));

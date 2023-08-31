@@ -1,10 +1,8 @@
 import Head from "next/head";
 import React from "react";
 import { META } from "../../constants/config";
-import styles from "./layout.module.css";
+// import styles from "./layout.module.css";
 import { Navbar } from "../Navbar";
-
-
 import { LeftMenu } from "../LeftMenu";
 import { Footer } from "../Footer";
 
@@ -12,27 +10,14 @@ import { Footer } from "../Footer";
 interface Props {
   title: string;
   children: React.ReactNode;
+  withMenu?: boolean;
 }
 
-export default function Layout({ title, children }: Props) {
-  const headerCss = {
-    header: {
-      gridArea: "header",
-      background: "#313537",
-    },
-  };
-  const asideCss = {
-    aside: {
-      gridArea: "aside",
-      background: "#313537",
-    },
-  };
-  const footerCss = {
-    footer: {
-      gridArea: "footer",
-      background: "#313537",
-    },
-  };
+export default function Layout({ title, withMenu = true, children }: Props) {
+
+  const styles = {
+   
+  }
 
   return (
     <>
@@ -51,11 +36,17 @@ export default function Layout({ title, children }: Props) {
         <meta content={META.twitter} name="twitter:site" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <Navbar headerCss={headerCss} />
-        <LeftMenu asideCss={asideCss} />
-        <section className={styles.section}>{children}</section>
-        <Footer footerCss={footerCss}/>
+      {/* <main className={styles.main}> */}
+      <main >
+        <Navbar  />
+        {/* {
+          withMenu && <LeftMenu asideCss={asideCss} />
+        } */}
+        {children}
+        
+        {/* <section className={styles.section}>{children}</section> */}
+        {/* <section style={styles.section}>{children}</section> */}
+        <Footer />
       </main>
     </>
   );
