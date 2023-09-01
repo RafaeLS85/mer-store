@@ -11,8 +11,10 @@ import {
   Image,
   Stack,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
+import { ModalComponent } from "../Modal";
 
 interface Props {
   item: Product
@@ -20,10 +22,12 @@ interface Props {
 
 export const CardItem = ({ item }: Props) => {
   const { category, description, id, image, price, stock, title } = item;
- 
-  console.log("CardItem:" , item)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  
   return (
-    <Card maxW="sm"backgroundColor="#4A5568">
+   <>
+    <Card maxW="sm"backgroundColor="#4A5568" >
       <CardBody >
         <Image
           src={image}
@@ -31,7 +35,8 @@ export const CardItem = ({ item }: Props) => {
           height={300}
           width={300}
           borderRadius="lg"
-        />
+          onClick={onOpen}
+          />
         <Stack mt="6" spacing="3">
           <Heading size="md">{title.toUpperCase()}</Heading>
           <Text>
@@ -54,5 +59,7 @@ export const CardItem = ({ item }: Props) => {
         </ButtonGroup>
       </CardFooter>
     </Card>
+    <ModalComponent size='xl' onClose={onClose} isOpen={isOpen} image={image} />
+   </>
   );
 };
