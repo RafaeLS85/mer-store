@@ -8,6 +8,7 @@ export const useSearch = () => {
   const { searchTerm } = useSearchStore();
   const [data, setData] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     if (!searchTerm) {
@@ -26,5 +27,13 @@ export const useSearch = () => {
       setData([]);
     }
   }, [searchTerm, products]);
-  return { data, error };
+
+
+  useEffect(() => {
+    if(data.length > 0){
+      setIsLoaded(true)
+    }
+  }, [data])
+
+  return { data, error, isLoaded };
 };

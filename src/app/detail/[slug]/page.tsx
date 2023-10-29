@@ -1,5 +1,6 @@
 "use client";
-import Layout from "@/components/Layout";
+
+import Layout from "@/components/Layout/DetailLayout";
 import { AddBtn } from "@/components/shared/AddBtn";
 import useProducts from "@/hooks/useProducts";
 import { Product } from "@/types/types";

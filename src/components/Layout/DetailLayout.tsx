@@ -1,23 +1,22 @@
 import Head from "next/head";
 import React from "react";
 import { META } from "../../constants/config";
-// import styles from "./layout.module.css";
 import { Navbar } from "../Navbar";
-import { LeftMenu } from "../LeftMenu";
 import { Footer } from "../Footer";
 
 
 interface Props {
   title: string;
-  children: React.ReactNode;
+  children: React.ReactNode;  
   withMenu?: boolean;
 }
 
-export default function Layout({ title, withMenu = true, children }: Props) {
+export default function Layout({
+  title,
+  children,  
+}: Props) {  
 
-  const styles = {
-   
-  }
+  const styles = {};
 
   return (
     <>
@@ -35,17 +34,10 @@ export default function Layout({ title, withMenu = true, children }: Props) {
         <meta content={META.twitter} name="twitter:creator" />
         <meta content={META.twitter} name="twitter:site" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {/* <main className={styles.main}> */}
-      <main >
-        <Navbar  />
-        {/* {
-          withMenu && <LeftMenu asideCss={asideCss} />
-        } */}
-        {children}
-        
-        {/* <section className={styles.section}>{children}</section> */}
-        {/* <section style={styles.section}>{children}</section> */}
+      </Head>      
+      <main>
+        <Navbar />       
+        {children}        
         <Footer />
       </main>
     </>

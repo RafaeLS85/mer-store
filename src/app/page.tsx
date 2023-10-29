@@ -4,15 +4,16 @@ import { useSearch } from "../hooks/useSearch";
 import "react-toastify/dist/ReactToastify.css";
 
 import { CategoryStoreInitializer } from "@/components/store";
-import Layout from "@/components/Layout";
+import Layout from "@/components/Layout/HomeLayout";
 
-import { Box, Container, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Container, Grid, GridItem, Skeleton } from "@chakra-ui/react";
 // import { ToastContainer } from 'react-toastify';
 import { SimpleGrid } from "@chakra-ui/react";
 import { CardItem } from "@/components/CardItem";
 
+
 export default function Home() {
-  const { data, error } = useSearch();
+  const { data, error, isLoaded } = useSearch();
   console.log({ data });
 
   // const breakpoints = {
@@ -25,7 +26,8 @@ export default function Home() {
   // };
 
   return (
-    <Layout title="Products">
+    <Layout title="Products" isLoaded={isLoaded}>
+
       <CategoryStoreInitializer categoryId={0} />
 
       <Container
@@ -35,23 +37,15 @@ export default function Home() {
         paddingTop="2rem"
         paddingBottom="2rem"
       >
-        {/* <Box padding='4' bg='blue.400' color='black' maxW='xl'> */}
-
-        {/* <SimpleGrid columns={{sm: 1, md: 2, lg: 4, xl: 5  }} spacing='40px'> */}
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} spacing="40px">
-          {!data && <div>Loading...</div>}
-          {error && <div>{error}</div>}
-
-          {data.map((product) =>
-            product.description ? (
-              <Box key={product.id}>
-                <CardItem item={product} />
-              </Box>
-            ) : null
-          )}
-        </SimpleGrid>
-
-        {/* </Box> */}
+          <SimpleGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} spacing="40px"> 
+            {data.map((product) =>
+              product.description ? (
+                <Box key={product.id}>
+                  <CardItem item={product} />
+                </Box>
+              ) : null
+            )}
+          </SimpleGrid>     
       </Container>
     </Layout>
   );
