@@ -27,7 +27,7 @@ export default function CheckoutPage() {
     );
 
   return (
-    <Layout title="Checkout page">
+    <Layout title="Checkout page" isLoaded={false}>
       <div
         style={{
           flexDirection: "column",
