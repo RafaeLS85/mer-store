@@ -17,4 +17,4 @@ export const META = {
     },
   };
 
-  export const PHONE_NUMBER = '+5493415559540'
+  export const PHONE_NUMBER = process.env.PHONE_NUMBER

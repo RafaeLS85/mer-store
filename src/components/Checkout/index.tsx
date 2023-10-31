@@ -7,16 +7,23 @@ import { useChartStore } from "../../store/store";
 // import { ToastContainer, toast } from "react-toastify";
 
 export const CheckoutTable = ({ products }: { products: Product[] }) => {
-  const { products: data } = useChartStore();
+  
+  // const { products: data } = useChartStore();
+  const chartState = useChartStore();
+  
   if (!products.length) return <div>No items</div>;
 
+  // const handleRemove = (index: number) => {
+  //   if (index > -1) products.splice(index, 1);
+  //   useChartStore.setState({ products });
+  //   // notify();
+  // };
+
   const handleRemove = (index: number) => {
-    if (index > -1) products.splice(index, 1);
+    chartState.removeProduct(index)
+  }
 
-    useChartStore.setState({ products });
 
-    // notify();
-  };
   const handleAdd = (item: Product) => {
     useChartStore.setState({ products: products.concat(item) });
   };
@@ -36,13 +43,13 @@ export const CheckoutTable = ({ products }: { products: Product[] }) => {
         {/* <th style={{ padding: "1rem", margin: "2rem" }}>Cantidad</th> */}
         <th style={{ padding: "1rem", margin: "2rem" }}>Agregar/Borrar</th>
       </tr>
-      {data.map((product, index) => (
+      {chartState.products.map((product, index) => (
         <tr key={product.id + Math.random()}>
           <td
             key={product.id + Math.random()}
             style={{ width: "100vw", padding: "1rem", margin: "2rem" }}
           >
-            {product.description}
+            {product.title}
           </td>
           <td
             key={product.id + Math.random()}

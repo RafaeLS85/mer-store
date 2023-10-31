@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { ModalComponent } from "../Modal";
+import { useChartStore } from "@/store/store";
 
 interface Props {
   item: Product
@@ -23,8 +24,16 @@ interface Props {
 export const CardItem = ({ item }: Props) => {
   const { category, description, id, image, price, stock, title } = item;
   const { isOpen, onOpen, onClose } = useDisclosure()
-
   
+  const chartState = useChartStore();
+
+  console.log('chartState:', chartState)
+
+  const handleClick = () => {
+    console.log("add to cart item")
+    chartState.addProduct(item)
+  }
+
   return (
    <>
     <Card maxW="sm"backgroundColor="#4A5568" >
@@ -51,10 +60,10 @@ export const CardItem = ({ item }: Props) => {
       <CardFooter>
         <ButtonGroup spacing="2">
           <Button variant="solid" colorScheme="blue">
-            Buy now
+            Comprar
           </Button>
-          <Button variant="ghost" colorScheme="blue">
-            Add to cart
+          <Button variant="ghost" colorScheme="blue" onClick={handleClick}>
+            Agregar al carrito
           </Button>
         </ButtonGroup>
       </CardFooter>

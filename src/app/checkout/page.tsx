@@ -1,10 +1,11 @@
 "use client";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { CheckoutTable } from "../../components/Checkout";
-import Layout from "../../components/Layout/HomeLayout";
+
 import { PHONE_NUMBER } from "../../constants/config";
 import { useChartStore } from "../../store/store";
 import { parseCurrency } from "../../utils";
+import Layout from "@/components/Layout/CheckoutLayout";
 
 export default function CheckoutPage() {
   // comnponente que muestra una tabla donde se listan los productos, se debe poder agregar, restar y eliminar productos.
@@ -27,7 +28,7 @@ export default function CheckoutPage() {
     );
 
   return (
-    <Layout title="Checkout page" isLoaded={false}>
+    <Layout title="Checkout page">
       <div
         style={{
           flexDirection: "column",

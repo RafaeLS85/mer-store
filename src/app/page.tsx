@@ -10,6 +10,7 @@ import { Box, Container, Grid, GridItem, Skeleton } from "@chakra-ui/react";
 // import { ToastContainer } from 'react-toastify';
 import { SimpleGrid } from "@chakra-ui/react";
 import { CardItem } from "@/components/CardItem";
+import { useChartStore } from "@/store/store";
 
 
 export default function Home() {
@@ -23,6 +24,11 @@ export default function Home() {
   //   lg: "62em", // ~992px
   //   xl: "80em", // ~1280px
   //   "2xl": "96em", // ~1536px
+
+
+  // const chartState = useChartStore();
+
+  // console.log('chartState:', chartState)
   // };
 
   return (
