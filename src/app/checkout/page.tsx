@@ -6,14 +6,15 @@ import { PHONE_NUMBER } from "../../constants/config";
 import { useChartStore } from "../../store/store";
 import { parseCurrency } from "../../utils";
 import Layout from "@/components/Layout/CheckoutLayout";
+import PageContainer from "@/components/shared/Container";
 
 export default function CheckoutPage() {
   // comnponente que muestra una tabla donde se listan los productos, se debe poder agregar, restar y eliminar productos.
   // debajo debe mostrar el total a pagar y un boton para realizar el pedido por whatsapp
 
-  const { products } = useChartStore();
+  const { products, chart } = useChartStore();
 
-  const text = products
+  const text = chart
     .reduce(
       (message, product) =>
         message.concat(
@@ -23,40 +24,33 @@ export default function CheckoutPage() {
     )
     .concat(
       `\nTotal: ${parseCurrency(
-        products.reduce((total, product) => total + product.price, 0)
+        chart.reduce((total, product) => total + product.price, 0)
       )}`
     );
 
   return (
     <Layout title="Checkout page">
-      <div
-        style={{
-          flexDirection: "column",
-          gap: "2rem",
-
-          gridColumn: "1/-1",
-        }}
-      >
+      <PageContainer>
         <h1>Mi Pedido</h1>
 
-        <CheckoutTable products={products} />
+        <CheckoutTable chart={chart} />
 
         <div>
-          Total: ${products.reduce((total, product) => total + product.price, 0)}
+          Total: ${chart.reduce((total, product) => total + product.price, 0)}
         </div>
 
         <a
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            pointerEvents: !Boolean(products.length) ? "none" : "unset",
+            pointerEvents: !Boolean(chart.length) ? "none" : "unset",
           }}
           href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
             text
           )}`}
         >
           <button
-            disabled={!Boolean(products.length)}
+            disabled={!Boolean(chart.length)}
             style={{
               background: "#6C9018",
               borderRadius: "10px",
@@ -65,7 +59,7 @@ export default function CheckoutPage() {
               justifyContent: "center",
               alignItems: "center",
               margin: "1rem",
-              opacity: Boolean(products.length) ? "1" : "0.5",
+              opacity: Boolean(chart.length) ? "1" : "0.5",
             }}
           >
             <div>Hacer el pedido </div>
@@ -73,7 +67,7 @@ export default function CheckoutPage() {
             <IoLogoWhatsapp size={25} />
           </button>
         </a>
-      </div>
+      </PageContainer>
     </Layout>
   );
 }

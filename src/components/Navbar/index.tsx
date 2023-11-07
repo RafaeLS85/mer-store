@@ -9,7 +9,7 @@ import { FiShoppingCart } from "react-icons/fi";
 interface Props {}
 
 export const Navbar = ({}: Props) => {
-  const { products } = useChartStore();
+  const { chart } = useChartStore();
 
   return (
     <header>
@@ -54,8 +54,8 @@ export const Navbar = ({}: Props) => {
           <div>SignUp</div> */}
           <div
             style={{
-              opacity: Boolean(products.length) ? "1" : "0.5",
-              pointerEvents: Boolean(products.length) ? "unset" : "none",
+              opacity: Boolean(chart.length) ? "1" : "0.5",
+              pointerEvents: Boolean(chart.length) ? "unset" : "none",
             }}
           >
             <Link href="/checkout">
@@ -78,7 +78,7 @@ export const Navbar = ({}: Props) => {
                     fontWeight: "bolder",
                   }}
                 >
-                  {products.length}
+                  {chart.length}
                 </span>
               </div>
             </Link>

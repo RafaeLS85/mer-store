@@ -5,7 +5,6 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Container,
   Divider,
   Heading,
   Image,
@@ -14,19 +13,14 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import PageContainer from "../shared/Container";
 
 export default function EmptyCard({ quantity }: { quantity: number }) {
 
   const arr = Array.from({ length: quantity }, (_, index) => index + 1)
 
   return (
-    <Container
-      maxW="6xl"
-      centerContent
-      border="1px solid #4A5568"
-      paddingTop="2rem"
-      paddingBottom="2rem"
-    >
+    <PageContainer>
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} spacing="40px">
         {arr.map((el, id) => (
           <Box key={id}>
@@ -64,6 +58,6 @@ export default function EmptyCard({ quantity }: { quantity: number }) {
           </Box>
         ))}
       </SimpleGrid>
-    </Container>
+    </PageContainer>
   );
 }
