@@ -7,12 +7,20 @@ import { useChartStore } from "../../store/store";
 import { parseCurrency } from "../../utils";
 import Layout from "@/components/Layout/CheckoutLayout";
 import PageContainer from "@/components/shared/Container";
+import { Chart } from "@/types/types";
+import { useEffect, useState } from "react";
 
 export default function CheckoutPage() {
   // comnponente que muestra una tabla donde se listan los productos, se debe poder agregar, restar y eliminar productos.
   // debajo debe mostrar el total a pagar y un boton para realizar el pedido por whatsapp
 
   const { products, chart } = useChartStore();
+
+  const [total, setTotal] =  useState(0);
+
+  useEffect(() => {
+    setTotal(chart.reduce((total, product) => total + product.price * product.quantity , 0))
+  }, [chart])
 
   const text = chart
     .reduce(
@@ -24,7 +32,7 @@ export default function CheckoutPage() {
     )
     .concat(
       `\nTotal: ${parseCurrency(
-        chart.reduce((total, product) => total + product.price, 0)
+        total
       )}`
     );
 
@@ -36,7 +44,7 @@ export default function CheckoutPage() {
         <CheckoutTable chart={chart} />
 
         <div>
-          Total: ${chart.reduce((total, product) => total + product.price, 0)}
+          Total: ${total}
         </div>
 
         <a
