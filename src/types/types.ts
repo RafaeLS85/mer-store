@@ -24,6 +24,9 @@ export type Pagination = {
 };
 
 export type Chart = {
-  user: User;
-  products: Product[];
+  id: string;
+  title: string;
+  price: number;
+  stock: number;
+  quantity: number;
 };

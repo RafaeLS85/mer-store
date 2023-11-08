@@ -1,28 +1,36 @@
 // import { useCart } from "@/hooks/useCart";
+import { Container } from "@chakra-ui/react";
 import { useChartStore } from "../../store/store";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 
-interface Props {
-  headerCss: {
-    header: {};
-  };
-}
+interface Props {}
 
-export const Navbar = ({ headerCss }: Props) => {
-  const { products } = useChartStore();
+export const Navbar = ({}: Props) => {
+  const { chart } = useChartStore();
 
   return (
-    <header style={Object.assign(headerCss.header)}>
-      <div
+    <header>
+      <Container
+        maxW="6xl"
+        bg="#2D3748"
+        centerContent
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        flexDirection="row"
+        paddingTop="0.5rem"
+        paddingBottom="0.5rem"
+      >
+        {/* <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
         }}
-      >
+      > */}
         <div>
           <Link href="/">
             <Image
@@ -46,8 +54,8 @@ export const Navbar = ({ headerCss }: Props) => {
           <div>SignUp</div> */}
           <div
             style={{
-              opacity: Boolean(products.length) ? "1" : "0.5",
-              pointerEvents: Boolean(products.length) ? "unset" : "none",
+              opacity: Boolean(chart.length) ? "1" : "0.5",
+              pointerEvents: Boolean(chart.length) ? "unset" : "none",
             }}
           >
             <Link href="/checkout">
@@ -70,13 +78,14 @@ export const Navbar = ({ headerCss }: Props) => {
                     fontWeight: "bolder",
                   }}
                 >
-                  {products.length}
+                  {chart.length}
                 </span>
               </div>
             </Link>
           </div>
         </div>
-      </div>
+        {/* </div> */}
+      </Container>
     </header>
   );
 };

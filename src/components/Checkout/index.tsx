@@ -1,89 +1,89 @@
 "use client";
-import { Product } from "../../types/types";
-import styles from "./chart.module.css";
-import { IoMdAddCircle } from "react-icons/io";
-import { BiSolidMinusCircle } from "react-icons/bi";
+import { Chart, Product } from "../../types/types";
 import { useChartStore } from "../../store/store";
 // import { ToastContainer, toast } from "react-toastify";
+import {
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
+import { TriangleUpIcon, TriangleDownIcon, DeleteIcon } from '@chakra-ui/icons'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export const CheckoutTable = ({ products }: { products: Product[] }) => {
-  const { products: data } = useChartStore();
 
-  // const cuantity = (id: string) => {
-  //   return products.filter((p) => p.id === id).length;
-  // };
+export const CheckoutTable = ({ chart }: { chart: Chart[] }) => {
+  const chartState = useChartStore();
 
-  // const notify = () =>
-  //   toast("Toast is good", {
-  //     hideProgressBar: true,
-  //     autoClose: 2000,
-  //     type: "success",
-  //     position: "bottom-right",
-  //   });
+  const notify = () => {
+    toast("Item removed", {
+      type: "default",
+      theme: "dark",
+      hideProgressBar: true,
+      position: "bottom-center",
+    });
+  }
 
-  if (!products.length) return <div>No items</div>;
+  if (!chart.length) return <div>No items</div>;
 
-  const handleRemove = (index: number) => {
-    if (index > -1) products.splice(index, 1);
-
-    useChartStore.setState({ products });
-
-    // notify();
+  const handleRemove = (id: string) => {
+    chartState.removeProduct(id);
+    notify();
   };
-  const handleAdd = (item: Product) => {
-    useChartStore.setState({ products: products.concat(item) });
-  };
+
+  const handleDecrease = (item: Chart) => {    
+    if(item.quantity >= 1){
+      chartState.decreaseQuantity(item.id)
+    }
+  }
 
   return (
-    <table
-      className={styles.table}
-      style={{
-        border: "1px solid white",
-        padding: "10px",
-        margin: "10px",
-      }}
-    >
-      <tr>
-        <th style={{ padding: "1rem", margin: "2rem" }}>Item</th>
-        <th style={{ padding: "1rem", margin: "2rem" }}>Precio</th>
-        {/* <th style={{ padding: "1rem", margin: "2rem" }}>Cantidad</th> */}
-        <th style={{ padding: "1rem", margin: "2rem" }}>Agregar/Borrar</th>
-      </tr>
-      {data.map((product, index) => (
-        <tr key={product.id + Math.random()}>
-          <td
-            key={product.id + Math.random()}
-            style={{ width: "100vw", padding: "1rem", margin: "2rem" }}
-          >
-            {product.description}
-          </td>
-          <td
-            key={product.id + Math.random()}
-            style={{ width: "2rem", padding: "1rem", margin: "2rem" }}
-          >
-            ${product.price}
-          </td>
-          <td
-            key={product.id + Math.random()}
-            style={{ width: "2rem", padding: "1rem", margin: "2rem" }}
-          >
-            <button
-              style={{ background: "none", marginRight: "1rem" }}
-              onClick={() => handleAdd(product)}
-            >
-              <IoMdAddCircle style={{ background: "#6C9018" }} size={20} />
-            </button>
-
-            <button
-              style={{ background: "none" }}
-              onClick={() => handleRemove(index)}
-            >
-              <BiSolidMinusCircle style={{ background: "#b11f1f" }} size={20} />
-            </button>       
-          </td>
-        </tr>
-      ))}
-      {/* <ToastContainer /> */}
-    </table>
+    <TableContainer>
+      <Table variant="simple">
+        <TableCaption>Los precios son solo disponibles para Argentina</TableCaption>
+        <Thead>
+          <Tr>
+            <Th></Th>
+            <Th>Cantidad</Th>
+            <Th>Item</Th>
+            <Th isNumeric>Precio</Th>
+            <Th isNumeric>Disponibles</Th>
+            <Th></Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {
+            chartState.chart.map((item, i) => (
+              <Tr key={ item.id + i }>
+                 <Td style={{ display: 'flex', gap: '5px' }}>
+                  <button onClick={()=> chartState.increaseQuantity(item.id)} style={{
+                     opacity: item.quantity < item.stock ? '1' : '0.5',
+                     pointerEvents: item.quantity !== item.stock ? 'unset' : 'none'
+                  }} ><TriangleUpIcon color="green.500" /></button>
+                  <button onClick={() => handleDecrease(item)} style={{
+                    opacity: item.quantity !== 1 ? '1' : '0.5',
+                    pointerEvents: item.quantity !== 1 ? 'unset' : 'none'
+                  }}><TriangleDownIcon color="red.500" /></button>
+                </Td>
+                <Td>{item.quantity}</Td>
+                <Td>{item.title}</Td>
+                <Td>${item.price}</Td>
+                <Td>{item.stock}</Td>
+                <Td>
+                  <button onClick={() =>handleRemove(item.id)}><DeleteIcon /></button>
+                </Td>
+              </Tr>
+            ))
+          }
+        </Tbody>
+      </Table>
+      <ToastContainer />
+    </TableContainer>
   );
 };
