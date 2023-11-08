@@ -3,20 +3,21 @@ import React from "react";
 import { META } from "../../constants/config";
 import { Navbar } from "../Navbar";
 import { Footer } from "../Footer";
+import EmptyProduct from "../Loading/EmptyProduct";
 
 
 interface Props {
   title: string;
   children: React.ReactNode;  
+  isLoaded: boolean;
   withMenu?: boolean;
 }
 
 export default function Layout({
   title,
   children,  
+  isLoaded,
 }: Props) {  
-
-  const styles = {};
 
   return (
     <>
@@ -36,7 +37,10 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>      
       <main>
-        <Navbar />       
+        <Navbar /> 
+        {!isLoaded && (
+          <EmptyProduct />          
+        )}      
         {children}        
         <Footer />
       </main>

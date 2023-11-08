@@ -14,10 +14,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
-import { ModalComponent } from "../Modal";
+import { ModalComponent } from "../shared/Modal";
 import { useChartStore } from "@/store/store";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/navigation";
+import { success } from "../shared/Notify";
+import { BiSolidCartAdd } from "react-icons/bi";
+import { MdAdd } from "react-icons/md"
 
 interface Props {
   item: Product
@@ -27,22 +31,8 @@ export const CardItem = ({ item }: Props) => {
   const { category, description, id, image, price, stock, title } = item;
   const { isOpen, onOpen, onClose } = useDisclosure()
   const chartState = useChartStore();
-
+  const router = useRouter();
   // console.log('chartState:', chartState)
-
-  const notify = () => {
-    toast('item added to your cart', {
-        position: "bottom-center",
-        autoClose: 3000,
-        type: "default", // "info", "success", "warning", "error"
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark", // "ligth", "colored"
-    });
-  }
 
   const addToChart = () => {
     const found = chartState.chart.find((p) => p.id === id);
@@ -54,7 +44,7 @@ export const CardItem = ({ item }: Props) => {
          quantity: 1
        });
     }
-    notify();
+    success("Producto agregado al carrito");
   }
 
   return (
@@ -77,7 +67,7 @@ export const CardItem = ({ item }: Props) => {
           <Text>
             Disponibles: { stock }
           </Text>
-          <Text color="blue.600" fontSize="2xl">
+          <Text color="blue.400" fontSize="2xl">
             ${ price }
           </Text>
         </Stack>
@@ -85,11 +75,12 @@ export const CardItem = ({ item }: Props) => {
       <Divider />
       <CardFooter>
         <ButtonGroup spacing="2">
-          <Button variant="solid" colorScheme="blue">
+          <Button variant="solid" colorScheme="blue" onClick={() => router.push(`/detail/${item.id}`)}>
             Ver mas
           </Button>
-          <Button variant="ghost" colorScheme="blue" onClick={addToChart}>
-            Agregar al carrito
+          <Button variant="solid" colorScheme="green" onClick={addToChart}>
+            {/* <MdAdd size={20}/>  */}
+            Agregar
           </Button>
         </ButtonGroup>
       </CardFooter>

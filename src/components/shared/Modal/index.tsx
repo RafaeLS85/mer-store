@@ -24,7 +24,7 @@ export const ModalComponent = ({ onClose, size, isOpen, image }: Props) => {
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={image} width={600} height={600}  alt='sarasa'/>
+            <Image src={image} width={600} height={600} alt='modal'/>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Cerrar</Button>
