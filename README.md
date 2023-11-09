@@ -14,17 +14,21 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Requirements
+## Requirements v1
+
+1. display items from file
+2. Chart
+3. Purchase section 
+4. Save products on local storage. (not implemented)
+
+
+## Requirements v2
 
 1. re-fetch data on file change (https://developers.google.com/apps-script/guides/triggers) (not implemented)
-2. search products (done)
-3. categories (done)
+2. search products 
+3. categories 
 4. pagination (not implemented)
-5. filters by category (done)
-6. Add and remove products on chart. (done)
-7. Purchase section (done)
-8. Save products on local storage. (not implemented)
-9. Design (not implemented) (https://alcaparras.com.ar/)
+5. filters by category 
+
 ### Optionals
 1. User login.
-
