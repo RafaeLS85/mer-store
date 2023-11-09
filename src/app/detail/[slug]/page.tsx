@@ -1,11 +1,12 @@
 "use client";
 import Layout from "@/components/Layout/DetailLayout";
 import PageContainer from "@/components/shared/Container";
-import { success } from "@/components/shared/Notify";
+import { useChart } from "@/hooks/useChart";
 import useProducts from "@/hooks/useProducts";
 import { useChartStore } from "@/store/store";
 import { Product } from "@/types/types";
-import { Button, ButtonGroup, Container, Divider, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { disabled } from "@/utils";
+import { Button, ButtonGroup, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
@@ -17,20 +18,8 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
   const chartState = useChartStore();
   const { id, price, title, image, stock, description } = product[0] || [];
   const router = useRouter();
-  // console.log({ product });
-
-  const addToChart = () => {
-    const found = chartState.chart.find((p) => p.id === id);
-    if (found) {
-      chartState.increaseQuantity(id);
-    } else {
-      chartState.addToChart({
-        ...product[0],
-        quantity: 1,
-      });
-    }
-    success("Producto agregado al carrito");
-  };
+  const {chartItem, addToChart} = useChart({store:chartState, id, item:product[0]})
+  const isDisabled = disabled(chartItem, stock)
 
   return (
     <>
@@ -53,6 +42,7 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
                   variant="solid"
                   colorScheme="green"
                   onClick={addToChart}
+                  isDisabled={isDisabled}
                 >
                   Agregar
                 </Button>
