@@ -17,4 +17,4 @@ export const META = {
     },
   };
 
-  export const PHONE_NUMBER = process.env.PHONE_NUMBER || 1111111
+  export const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE_NUMBER || 1234
