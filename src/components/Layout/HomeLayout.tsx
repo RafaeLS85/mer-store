@@ -1,9 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import { META } from "../../constants/config";
-// import styles from "./layout.module.css";
 import { Navbar } from "../Navbar";
-import { LeftMenu } from "../LeftMenu";
 import { Footer } from "../Footer";
 import EmptyCard from "../Loading/EmptyCard";
 
@@ -16,12 +14,9 @@ interface Props {
 
 export default function Layout({
   title,
-  withMenu = true,
   children,
   isLoaded,
 }: Props) {  
-
-  const styles = {};
 
   return (
     <>
@@ -40,21 +35,12 @@ export default function Layout({
         <meta content={META.twitter} name="twitter:site" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <main className={styles.main}> */}
       <main>
         <Navbar />
-        {/* {
-          withMenu && <LeftMenu asideCss={asideCss} />
-        } */}    
-
         {!isLoaded && (
           <EmptyCard quantity={6} />          
         )}
-
         {children}       
-
-        {/* <section className={styles.section}>{children}</section> */}
-        {/* <section style={styles.section}>{children}</section> */}
         <Footer />
       </main>
     </>

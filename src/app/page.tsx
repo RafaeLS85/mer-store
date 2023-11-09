@@ -1,16 +1,11 @@
 "use client";
-
 import { useSearch } from "../hooks/useSearch";
 import "react-toastify/dist/ReactToastify.css";
-
 import { CategoryStoreInitializer } from "@/components/store";
 import Layout from "@/components/Layout/HomeLayout";
-
-import { Box, Container, Grid, GridItem, Skeleton } from "@chakra-ui/react";
-// import { ToastContainer } from 'react-toastify';
+import { Box, Container } from "@chakra-ui/react";
 import { SimpleGrid } from "@chakra-ui/react";
 import { CardItem } from "@/components/CardItem";
-import { useChartStore } from "@/store/store";
 
 
 export default function Home() {
