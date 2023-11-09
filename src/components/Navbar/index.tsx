@@ -1,4 +1,3 @@
-// import { useCart } from "@/hooks/useCart";
 import { Container } from "@chakra-ui/react";
 import { useChartStore } from "../../store/store";
 import Image from "next/image";
@@ -6,9 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 
-interface Props {}
-
-export const Navbar = ({}: Props) => {
+export const Navbar = () => {
   const { chart } = useChartStore();
 
   return (
@@ -24,13 +21,6 @@ export const Navbar = ({}: Props) => {
         paddingTop="0.5rem"
         paddingBottom="0.5rem"
       >
-        {/* <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      > */}
         <div>
           <Link href="/">
             <Image
@@ -50,8 +40,6 @@ export const Navbar = ({}: Props) => {
             marginRight: "1rem",
           }}
         >
-          {/* <div>Login</div>
-          <div>SignUp</div> */}
           <div
             style={{
               opacity: Boolean(chart.length) ? "1" : "0.5",
@@ -65,7 +53,7 @@ export const Navbar = ({}: Props) => {
                 }}
               >
                 <FiShoppingCart size={25} style={{ marginRight: "10px" }} />
-                <p style={{ marginRight: "10px" }}>Mi pedido</p>
+                <p style={{ marginRight: "10px"}}>Mi pedido</p>
 
                 <span
                   style={{
@@ -84,7 +72,6 @@ export const Navbar = ({}: Props) => {
             </Link>
           </div>
         </div>
-        {/* </div> */}
       </Container>
     </header>
   );

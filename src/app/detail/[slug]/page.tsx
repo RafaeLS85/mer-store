@@ -50,6 +50,7 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
                   variant="outline"
                   colorScheme="yellow"
                   onClick={() => router.push("/checkout")}
+                  isDisabled={!Boolean(chartState.chart.length)}
                 >
                   Mi pedido
                 </Button>
