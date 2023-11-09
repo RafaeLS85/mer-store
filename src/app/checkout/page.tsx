@@ -1,26 +1,27 @@
 "use client";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { CheckoutTable } from "../../components/Checkout";
-
 import { PHONE_NUMBER } from "../../constants/config";
 import { useChartStore } from "../../store/store";
 import { parseCurrency } from "../../utils";
 import Layout from "@/components/Layout/CheckoutLayout";
 import PageContainer from "@/components/shared/Container";
-import { Chart } from "@/types/types";
 import { useEffect, useState } from "react";
+import { CHECKOUT_PAGE } from "@/constants/checkout";
 
 export default function CheckoutPage() {
-  // comnponente que muestra una tabla donde se listan los productos, se debe poder agregar, restar y eliminar productos.
-  // debajo debe mostrar el total a pagar y un boton para realizar el pedido por whatsapp
+  const { chart } = useChartStore();
 
-  const { products, chart } = useChartStore();
-
-  const [total, setTotal] =  useState(0);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTotal(chart.reduce((total, product) => total + product.price * product.quantity , 0))
-  }, [chart])
+    setTotal(
+      chart.reduce(
+        (total, product) => total + product.price * product.quantity,
+        0
+      )
+    );
+  }, [chart]);
 
   const text = chart
     .reduce(
@@ -30,21 +31,18 @@ export default function CheckoutPage() {
         ),
       ``
     )
-    .concat(
-      `\nTotal: ${parseCurrency(
-        total
-      )}`
-    );
+    .concat(`\nTotal: ${parseCurrency(total)}`);
 
   return (
     <Layout title="Checkout page">
       <PageContainer>
-        <h1>Mi Pedido</h1>
+        <h1>{CHECKOUT_PAGE.title}</h1>
 
         <CheckoutTable chart={chart} />
 
         <div>
-          Total: ${total}
+          {CHECKOUT_PAGE.total}
+          {total}
         </div>
 
         <a
@@ -70,7 +68,7 @@ export default function CheckoutPage() {
               opacity: Boolean(chart.length) ? "1" : "0.5",
             }}
           >
-            <div>Hacer el pedido </div>
+            <div>{CHECKOUT_PAGE.buttonLabel}</div>
 
             <IoLogoWhatsapp size={25} />
           </button>

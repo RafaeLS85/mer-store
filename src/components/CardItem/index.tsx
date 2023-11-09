@@ -21,6 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import { disabled } from "@/utils";
 import { useChart } from "@/hooks/useChart";
+import { CARD } from "@/constants/card";
 
 interface Props {
   item: Product;
@@ -49,7 +50,13 @@ export const CardItem = ({ item }: Props) => {
           <Stack mt="6" spacing="3">
             <Heading size="md">{title.toUpperCase()}</Heading>
             <Text>{description}</Text>
-            <Text>Disponibles: {stock}</Text>
+            {stock ? (
+              <Text color="green.400">
+                {CARD.stock} {stock}
+              </Text>
+            ) : (
+              <Text color="red.400">{CARD.outOfStock}</Text>
+            )}
             <Text color="blue.400" fontSize="2xl">
               ${price}
             </Text>
@@ -63,7 +70,7 @@ export const CardItem = ({ item }: Props) => {
               colorScheme="blue"
               onClick={() => router.push(`/detail/${item.id}`)}
             >
-              Ver mas
+              {CARD.goToDetail}
             </Button>
             <Button
               variant="solid"
@@ -71,7 +78,7 @@ export const CardItem = ({ item }: Props) => {
               onClick={addToChart}
               isDisabled={isDisabled}
             >
-              Agregar
+              {CARD.add}
             </Button>
           </ButtonGroup>
         </CardFooter>
