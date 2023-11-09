@@ -8,6 +8,7 @@ import Layout from "@/components/Layout/CheckoutLayout";
 import PageContainer from "@/components/shared/Container";
 import { useEffect, useState } from "react";
 import { CHECKOUT_PAGE } from "@/constants/checkout";
+import { Heading } from "@chakra-ui/react";
 
 export default function CheckoutPage() {
   const { chart } = useChartStore();
@@ -36,7 +37,7 @@ export default function CheckoutPage() {
   return (
     <Layout title="Checkout page">
       <PageContainer>
-        <h1>{CHECKOUT_PAGE.title}</h1>
+        <Heading as='h2' size='xl' marginBottom="8">{CHECKOUT_PAGE.title}</Heading>
 
         <CheckoutTable chart={chart} />
 

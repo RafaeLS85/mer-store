@@ -10,29 +10,31 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  Container,
 } from "@chakra-ui/react";
 import { TriangleUpIcon, TriangleDownIcon, DeleteIcon } from "@chakra-ui/icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CHECKOUT_PAGE } from "@/constants/checkout";
+import Link from "next/link";
+import { deleted } from "../shared/Notify";
 
 export const CheckoutTable = ({ chart }: { chart: Chart[] }) => {
   const chartState = useChartStore();
 
-  const notify = () => {
-    toast("Item removed", {
-      type: "default",
-      theme: "dark",
-      hideProgressBar: true,
-      position: "bottom-center",
-    });
-  };
-
-  if (!chart.length) return <div>{CHECKOUT_PAGE.noItems}</div>;
+  if (!chart.length)
+    return (
+      <Container textAlign="center">
+        {CHECKOUT_PAGE.noItems}{" "}
+        <Link href="/" style={{ color: "#3AAFE9" }}>
+          Volver
+        </Link>{" "}
+      </Container>
+    );
 
   const handleRemove = (id: string) => {
     chartState.removeProduct(id);
-    notify();
+    deleted();
   };
 
   const handleDecrease = (item: Chart) => {

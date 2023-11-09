@@ -27,3 +27,12 @@ export const success = (message: string) => {
         theme: "dark", // "ligth", "colored"
     });
   }
+
+  export const deleted = () => {
+    toast("Producto eliminado", {
+      type: "default",
+      theme: "dark",
+      hideProgressBar: true,
+      position: "bottom-right",
+    });
+  };
