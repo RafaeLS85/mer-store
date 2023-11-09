@@ -1,4 +1,4 @@
-import { Product } from "../types/types";
+import { Chart, Product } from "../types/types";
 
 export function parseCurrency(value: number): string {
   return value.toLocaleString("es-AR", {
@@ -13,4 +13,14 @@ export const calculateTotal = (items: Product[]) => {
   console.log(reduce)
 
   return reduce
+}
+
+export const disabled = (item: Chart | undefined, stock:number) => {
+  if (item?.quantity === stock ){
+    return true
+  }
+  if(!Boolean(stock)){
+    return true
+  }
+  return false
 }

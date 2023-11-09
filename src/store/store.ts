@@ -1,7 +1,7 @@
 import { Chart, Product } from "../types/types";
 import { create } from "zustand";
 
-interface ChartState {
+export interface ChartState {
   products: Product[];
   chart: Chart[];
   addProduct: (product: Product) => void;
