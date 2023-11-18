@@ -3,9 +3,11 @@ export type Product = {
   title: string;
   category: string;
   description: string;
-  image: string;
+  images: string;
   price: number;
   stock: number;
+  thumbnail: string;
+  images_list: string[]
 };
 
 export type User = {

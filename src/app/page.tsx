@@ -1,20 +1,25 @@
 "use client";
-import { useSearch } from "../hooks/useSearch";
+// import { useSearch } from "../hooks/useSearch";
 import "react-toastify/dist/ReactToastify.css";
-import { CategoryStoreInitializer } from "@/components/store";
+// import { CategoryStoreInitializer } from "@/components/store";
 import Layout from "@/components/Layout/HomeLayout";
 import { Box, Container } from "@chakra-ui/react";
 import { SimpleGrid } from "@chakra-ui/react";
 import { CardItem } from "@/components/CardItem";
+import { useProductStore } from "@/store/products";
+import { useProducts } from "@/hooks/useProducts";
 
 
 export default function Home() {
-  const { data, error, isLoaded } = useSearch();
+  // const { data, error, isLoaded } = useSearch();
+  // const [isLoaded, setIsLoaded] = useState(false)
+  const products = useProductStore((state) => state.products )  
+  const { isLoaded } =  useProducts({ products })  
 
   return (
     <Layout title="Products" isLoaded={isLoaded}>
 
-      <CategoryStoreInitializer categoryId={0} />
+      {/* <CategoryStoreInitializer categoryId={0} /> */}
 
       <Container
         maxW="6xl"
@@ -24,7 +29,7 @@ export default function Home() {
         paddingBottom="2rem"
       >
           <SimpleGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} spacing="40px"> 
-            {data.map((product) =>
+            {products.map((product) =>
               product.description ? (
                 <Box key={product.id}>
                   <CardItem item={product} />

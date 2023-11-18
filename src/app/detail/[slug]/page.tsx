@@ -1,22 +1,26 @@
 "use client";
 import Layout from "@/components/Layout/DetailLayout";
 import PageContainer from "@/components/shared/Container";
+import { fallback500 } from "@/constants/images";
 import { useChart } from "@/hooks/useChart";
-import useProducts from "@/hooks/useProducts";
-import { useChartStore } from "@/store/store";
+// import useProducts from "@/hooks/useProducts";
+import { useChartStore } from "@/store/chart";
+import { useProductStore } from "@/store/products";
+// import { useChartStore } from "@/store/store";
 import { Product } from "@/types/types";
 import { disabled } from "@/utils";
-import { Button, ButtonGroup, Container, Flex, Heading, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Button, ButtonGroup, Container, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function DetailPage({ params }: { params: { slug: string } }) {
-  const { products } = useProducts();
+  // const { products } = useProducts();
+  const products = useProductStore((state) => state.products )
   const product: Product[] = products.filter((x) => x.id === params.slug);
+
   const chartState = useChartStore();
-  const { id, price, title, image, stock, description } = product[0] || [];
+  const { id, price, title, stock, description, images_list } = product[0] || [];
   const router = useRouter();
   const {chartItem, addToChart} = useChart({store:chartState, id, item:product[0]})
   const isDisabled = disabled(chartItem, stock)
@@ -27,7 +31,16 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
         <PageContainer>
           <Heading>{title?.toUpperCase()}</Heading>
           <Text lineHeight="10" fontSize='md'>{description}</Text>
-          <Image src={image} width={500} height={500} alt={title} />
+          {
+            images_list && images_list.map((src, i) => (
+              <Image 
+                key={i}
+                src={src}  
+                fallbackSrc={fallback500}               
+                alt={title} 
+              />
+            ))
+          }
           <Container paddingTop="2rem" paddingBottom="2rem">
             <Flex justifyContent="center" gap="2">
               <ButtonGroup gap="5" alignItems="center" maxWidth="md">

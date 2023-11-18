@@ -1,5 +1,6 @@
+import { useChartStore } from "@/store/chart";
 import { Container } from "@chakra-ui/react";
-import { useChartStore } from "../../store/store";
+// import { useChartStore } from "../../store/store";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

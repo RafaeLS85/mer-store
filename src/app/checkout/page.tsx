@@ -2,13 +2,14 @@
 import { IoLogoWhatsapp } from "react-icons/io";
 import { CheckoutTable } from "../../components/Checkout";
 import { PHONE_NUMBER } from "../../constants/config";
-import { useChartStore } from "../../store/store";
+// import { useChartStore } from "../../store/store";
 import { parseCurrency } from "../../utils";
 import Layout from "@/components/Layout/CheckoutLayout";
 import PageContainer from "@/components/shared/Container";
 import { useEffect, useState } from "react";
 import { CHECKOUT_PAGE } from "@/constants/checkout";
 import { Heading } from "@chakra-ui/react";
+import { useChartStore } from "@/store/chart";
 
 export default function CheckoutPage() {
   const { chart } = useChartStore();

@@ -1,6 +1,6 @@
 "use client";
 import { Chart } from "../../types/types";
-import { useChartStore } from "../../store/store";
+// import { useChartStore } from "../../store/store";
 import {
   Table,
   Thead,
@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { CHECKOUT_PAGE } from "@/constants/checkout";
 import Link from "next/link";
 import { deleted } from "../shared/Notify";
+import { useChartStore } from "@/store/chart";
 
 export const CheckoutTable = ({ chart }: { chart: Chart[] }) => {
   const chartState = useChartStore();

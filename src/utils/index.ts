@@ -7,7 +7,6 @@ export function parseCurrency(value: number): string {
   });
 }
 
-
 export const calculateTotal = (items: Product[]) => {
   let reduce = items.reduce((acc, item) => acc + item.price, 0);
   console.log(reduce)
@@ -23,4 +22,15 @@ export const disabled = (item: Chart | undefined, stock:number) => {
     return true
   }
   return false
+}
+
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+export const cutString = (str: string, long: number ) => {
+  if(str.length > long ){
+    return str.slice(0, long) + '...';
+  }
+  return str
 }

@@ -7,24 +7,42 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Image
 } from '@chakra-ui/react'
-import Image from 'next/image'
+import NextImage from 'next/image';
 
 interface Props {
   onClose: () => void;
   size: string;
   isOpen: boolean;
-  image: string
+  images: string[]
 }
 
-export const ModalComponent = ({ onClose, size, isOpen, image }: Props) => {  
+export const ModalComponent = ({ onClose, size, isOpen, images }: Props) => {  
   return (      
       <Modal onClose={onClose} size={size} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={image} width={600} height={600} alt='modal'/>
+            {
+              images.length && images.map((src) => (
+                // <Image
+                //   key={src} 
+                //   src={src} 
+                //   // width={600} 
+                //   // height={600} 
+                //   alt='modal'
+                // />
+                <NextImage
+                  key={src} 
+                  src={src}
+                  width={500}
+                  height={500}
+                  alt={src}
+                />
+              ))
+            }
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Cerrar</Button>
