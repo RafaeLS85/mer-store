@@ -13,6 +13,7 @@ export const ImagesContainer = ({ images, containerProps }: { images: string[], 
         {
         imgLength !== 1 && (               
             <IconButton 
+                isRound={true}
                 aria-label='previous image' 
                 icon={<BiLeftArrowAlt />}            
                 colorScheme='blue'
@@ -26,7 +27,7 @@ export const ImagesContainer = ({ images, containerProps }: { images: string[], 
         <Image 
             key={images[imgIndex]} 
             src={fallback500}
-            height={500} 
+            height={500}    
             width={500} 
             fallbackSrc={fallback500}
         />
@@ -42,13 +43,13 @@ export const ImagesContainer = ({ images, containerProps }: { images: string[], 
         {
         imgLength !== 1 && (               
             <IconButton 
-            aria-label='next image' 
-            icon={<BiRightArrowAlt />} 
-            
-            colorScheme='blue'
-            onClick={goNextImg}  
-            isDisabled={imgIndex === imgLength - 1}
-        />              
+                isRound={true}
+                aria-label='next image' 
+                icon={<BiRightArrowAlt />} 
+                colorScheme='blue'
+                onClick={goNextImg}  
+                isDisabled={imgIndex === imgLength - 1}
+            />              
         )
         } 
     </Flex> 

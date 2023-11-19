@@ -21,7 +21,7 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
   const product: Product[] = products.filter((x) => x.id === params.slug);
 
   const chartState = useChartStore();
-  const { id, price, title, stock, description, images_list } = product[0] || [];
+  const { id, price, title, stock, description, images_list, long_desc } = product[0] || [];
   const router = useRouter();
   const {chartItem, addToChart} = useChart({store:chartState, id, item:product[0]})
   const isDisabled = disabled(chartItem, stock)
@@ -40,7 +40,9 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
           <Heading>{title?.toUpperCase()}</Heading>
           <Text lineHeight="10" fontSize='md'>{description}</Text>
           
-          <ImagesContainer images={images_list} containerProps={containerProps} />  
+          <ImagesContainer images={images_list} containerProps={containerProps} /> 
+
+          <Text>{long_desc}</Text> 
            
           <Container paddingTop="2rem" paddingBottom="2rem">
             <Flex justifyContent="center" gap="2">

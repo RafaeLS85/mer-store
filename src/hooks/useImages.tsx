@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const useImages = ({ images }: { images: string[] }) => {
     const [imgIndex, setImgIndex] = useState(0);
-    const [imgLength] = useState(images.length);
+    const [imgLength] = useState(images?.length);
     
     const goNextImg = () => {
       if (imgIndex < imgLength - 1) {

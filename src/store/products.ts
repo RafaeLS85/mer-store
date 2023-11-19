@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 import { Product } from "../types/types";
 import api from "@/services/product";
 
@@ -8,14 +7,14 @@ interface ProductState {
     fetchProducts: () => void;
 }
 
-export const useProductStore = create<ProductState>()(persist((set, get) => {  
+export const useProductStore = create<ProductState>((set, get) => {  
   return {
     products: [],
     fetchProducts: async () => {
 
       const { products } = get();
 
-      if(products.length === 0 ){        
+      if(products.length === 0 ){          
         const res = await api.list();
         set({ products: res })
       }     
@@ -25,6 +24,4 @@ export const useProductStore = create<ProductState>()(persist((set, get) => {
       }                  
     }     
   }
-}, {
-  name: 'products'
-}))
+})
