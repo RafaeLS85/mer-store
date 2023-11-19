@@ -9,7 +9,6 @@ export function parseCurrency(value: number): string {
 
 export const calculateTotal = (items: Product[]) => {
   let reduce = items.reduce((acc, item) => acc + item.price, 0);
-  console.log(reduce)
 
   return reduce
 }
