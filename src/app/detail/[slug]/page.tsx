@@ -1,6 +1,7 @@
 "use client";
 import Layout from "@/components/Layout/DetailLayout";
 import PageContainer from "@/components/shared/Container";
+import { ImagesContainer } from "@/components/shared/ImagesContainer";
 import { fallback500 } from "@/constants/images";
 import { useChart } from "@/hooks/useChart";
 // import useProducts from "@/hooks/useProducts";
@@ -25,22 +26,22 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
   const {chartItem, addToChart} = useChart({store:chartState, id, item:product[0]})
   const isDisabled = disabled(chartItem, stock)
 
+
+  const containerProps = {
+    justifyContent:'center',
+    alignItems:'center',
+    gap: 2
+  }
+
   return (
     <>
       <Layout title="Product" isLoaded={Boolean(product.length)}>
         <PageContainer>
           <Heading>{title?.toUpperCase()}</Heading>
           <Text lineHeight="10" fontSize='md'>{description}</Text>
-          {
-            images_list && images_list.map((src, i) => (
-              <Image 
-                key={i}
-                src={src}  
-                fallbackSrc={fallback500}               
-                alt={title} 
-              />
-            ))
-          }
+          
+          <ImagesContainer images={images_list} containerProps={containerProps} />  
+           
           <Container paddingTop="2rem" paddingBottom="2rem">
             <Flex justifyContent="center" gap="2">
               <ButtonGroup gap="5" alignItems="center" maxWidth="md">
