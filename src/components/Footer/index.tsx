@@ -1,5 +1,5 @@
 import { PHONE_NUMBER } from "@/constants/config";
-import { Container } from "@chakra-ui/react";
+import { Container, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
@@ -25,9 +25,10 @@ const Version = () => {
 
 export const Footer = ({}: Props) => {
   const text = "Hola, quisiera consultar acerca de los productos de la tienda";
+  const { colorMode, toggleColorMode } = useColorMode();  
 
   return (
-    <Container maxW="6xl" bg="#2D3748">
+    <Container maxW="6xl" bg={ colorMode === "dark" ? "#2D3748" : "white"} >
       <footer>
         <div
           style={{

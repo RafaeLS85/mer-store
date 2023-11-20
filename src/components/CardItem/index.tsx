@@ -12,6 +12,7 @@ import {
   Image,
   Stack,
   Text,
+  useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
@@ -47,9 +48,11 @@ export const CardItem = ({ item }: Props) => {
   const { chartItem, addToChart } = useChart({ store: chartState, id, item });
   const isDisabled = disabled(chartItem, stock);
 
+  const { colorMode, toggleColorMode } = useColorMode();  
+
   return (
     <>
-      <Card maxW="sm" backgroundColor="#4A5568">
+      <Card maxW="sm" backgroundColor={ colorMode === "dark" ? "#4A5568" : "white"}  >
         <Text
           color="yellow.400"
           fontSize="2xl"

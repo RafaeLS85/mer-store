@@ -6,6 +6,19 @@ import NextImage from "next/image";
 
 export const ImagesContainer = ({ images, containerProps }: { images: string[], containerProps: any }) => {
 
+
+ if(images === undefined ) {
+    return (
+        <Image 
+        key={fallback500} 
+        src={fallback500}
+        height={500}    
+        width={500} 
+        fallbackSrc={fallback500}
+    />
+    )
+ }   
+
  const { imgLength, goNextImg, goPrevImg, imgIndex } = useImages({ images });
 
  return (
@@ -23,7 +36,7 @@ export const ImagesContainer = ({ images, containerProps }: { images: string[], 
         )
         } 
         {
-        images[imgIndex] === '' || images[imgIndex] === undefined ? (
+        images[imgIndex] === '' ? ( 
         <Image 
             key={images[imgIndex]} 
             src={fallback500}
