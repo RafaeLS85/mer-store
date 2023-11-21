@@ -19,8 +19,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 1. display items from file
 2. Chart
 3. Purchase section 
-4. Save products on local storage. (not implemented)
-
 
 ## Requirements v2
 
@@ -29,6 +27,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 3. categories 
 4. pagination (not implemented)
 5. filters by category 
+6. Save Chart on local storage. 
+7. Dark mode switch.
+8. re-styling (in progress)
 
 ### Optionals
 1. User login.
