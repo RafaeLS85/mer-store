@@ -5,7 +5,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import NextImage from "next/image";
 
 export const ImagesContainer = ({ images, containerProps }: { images: string[], containerProps: any }) => {
-
+ const { imgLength, goNextImg, goPrevImg, imgIndex } = useImages({ images });
 
  if(images === undefined ) {
     return (
@@ -17,9 +17,7 @@ export const ImagesContainer = ({ images, containerProps }: { images: string[], 
         fallbackSrc={fallback500}
     />
     )
- }   
-
- const { imgLength, goNextImg, goPrevImg, imgIndex } = useImages({ images });
+ }    
 
  return (
     <Flex {...containerProps}>
