@@ -1,4 +1,4 @@
-import TooggleTheme from "@/app/ToggleTheme";
+import TooggleThemeBtn from "@/app/ToggleTheme";
 import { useChartStore } from "@/store/chart";
 import { Container, useColorMode } from "@chakra-ui/react";
 // import { useChartStore } from "../../store/store";
@@ -15,8 +15,9 @@ export const Navbar = () => {
     <header>
       <Container
         maxW="6xl"
-        bg={ colorMode === "dark" ? "#2D3748" : "white"}
+        bg={ colorMode === "dark" ? "#2D3748" : "lightgray"}
         centerContent
+        
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -55,8 +56,8 @@ export const Navbar = () => {
                   display: "flex",
                 }}
               >
-                <FiShoppingCart size={25} style={{ marginRight: "10px" }} />
-                <p style={{ marginRight: "10px"}}>Mi pedido</p>
+                <FiShoppingCart size={25} style={{ marginRight: "10px" }}  color={ colorMode === "dark" ? "white" : "black"} />
+                <p style={{ marginRight: "10px", color: colorMode === "dark" ? "white" : "black"  }}>Mi pedido</p>
 
                 <span
                   style={{
@@ -74,7 +75,9 @@ export const Navbar = () => {
               </div>
             </Link>            
           </div>
-          <TooggleTheme />
+
+          <TooggleThemeBtn />
+
         </div>
       </Container>
     </header>

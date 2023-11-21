@@ -19,7 +19,7 @@ export const useProducts = ({ products } : { products: Product[] } ) => {
             fetchProducts()
         }
 
-      }, [products])
+      }, [products, fetchProducts])
     
     return { isLoaded }
 }

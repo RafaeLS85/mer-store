@@ -28,7 +28,7 @@ export const Footer = ({}: Props) => {
   const { colorMode, toggleColorMode } = useColorMode();  
 
   return (
-    <Container maxW="6xl" bg={ colorMode === "dark" ? "#2D3748" : "white"} >
+    <Container maxW="6xl" bg={ colorMode === "dark" ? "#2D3748" : "lightgray"} >
       <footer>
         <div
           style={{

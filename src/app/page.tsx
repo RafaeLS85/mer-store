@@ -3,28 +3,32 @@
 import "react-toastify/dist/ReactToastify.css";
 // import { CategoryStoreInitializer } from "@/components/store";
 import Layout from "@/components/Layout/HomeLayout";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, useColorMode } from "@chakra-ui/react";
 import { SimpleGrid } from "@chakra-ui/react";
 import { CardItem } from "@/components/CardItem";
 import { useProductStore } from "@/store/products";
 import { useProducts } from "@/hooks/useProducts";
 
+export default function Home() {  
+  const products = useProductStore((state) => state.products ); 
+  const { isLoaded } =  useProducts({ products }); 
+  const { colorMode, toggleColorMode } = useColorMode();  
 
-export default function Home() {
-  // const { data, error, isLoaded } = useSearch();
-  // const [isLoaded, setIsLoaded] = useState(false)
-  const products = useProductStore((state) => state.products )  
-  const { isLoaded } =  useProducts({ products })  
+
+
+  const color = colorMode === "dark" ? "#2D3748" : "lightgray";
+  const border = {    
+    left: `.1px solid ${color}`,
+    right: `.1px solid ${color}`,
+  }
 
   return (
     <Layout title="Products" isLoaded={isLoaded}>
-
-      {/* <CategoryStoreInitializer categoryId={0} /> */}
-
       <Container
         maxW="6xl"
-        centerContent
-        border="1px solid #4A5568"
+        centerContent        
+        borderLeft={border.left}
+        borderRight={border.right}
         paddingTop="2rem"
         paddingBottom="2rem"
       >
