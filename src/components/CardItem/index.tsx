@@ -52,9 +52,9 @@ export const CardItem = ({ item }: Props) => {
 
   return (
     <>
-      <Card maxW="sm" backgroundColor={ colorMode === "dark" ? "#4A5568" : "white"}  >
+      <Card maxW="sm" backgroundColor={ colorMode === "dark" ? "#4A5568" : "lightgray"}  >
         <Text
-          color="yellow.400"
+          color={colorMode === "dark" ? "white" : "blackAlpha.700"}
           fontSize="2xl"
           as="b"
           padding="2"
@@ -66,6 +66,7 @@ export const CardItem = ({ item }: Props) => {
 
         <CardBody alignSelf="center">
           <Image
+            cursor="pointer"
             src={thumbnail}
             alt={title}
             borderRadius="lg"

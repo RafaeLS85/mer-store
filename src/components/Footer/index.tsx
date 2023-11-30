@@ -27,8 +27,10 @@ export const Footer = ({}: Props) => {
   const text = "Hola, quisiera consultar acerca de los productos de la tienda";
   const { colorMode, toggleColorMode } = useColorMode();  
 
+  const bg = colorMode === "dark" ? "#2D3748" : "#97a0a1";
+
   return (
-    <Container maxW="6xl" bg={ colorMode === "dark" ? "#2D3748" : "lightgray"} >
+    <Container maxW="6xl" bg={bg} >
       <footer>
         <div
           style={{
@@ -42,13 +44,13 @@ export const Footer = ({}: Props) => {
           }}
         >
           <Link href="https://www.facebook.com/pacaratejidos/" target="_blank">
-            <AiFillFacebook size={25} />
+            <AiFillFacebook size={25} color={ colorMode === "dark" ? "white" : "" }  />
           </Link>
           <Link
             href="https://www.instagram.com/pacara.tejidos/"
             target="_blank"
           >
-            <AiFillInstagram size={25} />
+            <AiFillInstagram size={25} color={ colorMode === "dark" ? "white" : "" } />
           </Link>
           <Link
             href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
@@ -56,7 +58,7 @@ export const Footer = ({}: Props) => {
             )}`}
             target="_blank"
           >
-            <IoLogoWhatsapp size={25} />
+            <IoLogoWhatsapp size={25} color={ colorMode === "dark" ? "white" : "" } />
           </Link>
         </div>
         <Version />

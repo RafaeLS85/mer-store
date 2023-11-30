@@ -11,13 +11,14 @@ export const Navbar = () => {
   const { chart } = useChartStore();
   const { colorMode, toggleColorMode } = useColorMode();  
 
+  const bg = colorMode === "dark" ? "#2D3748" : "#97a0a1";
+
   return (
     <header>
       <Container
         maxW="6xl"
-        bg={ colorMode === "dark" ? "#2D3748" : "lightgray"}
-        centerContent
-        
+        bg="#1a202c"
+        centerContent        
         display="flex"
         alignItems="center"
         justifyContent="space-between"
@@ -42,6 +43,7 @@ export const Navbar = () => {
             gap: "12px",
             color: "black",
             marginRight: "1rem",
+            alignItems:"center"
           }}
         >
           <div
@@ -56,8 +58,8 @@ export const Navbar = () => {
                   display: "flex",
                 }}
               >
-                <FiShoppingCart size={25} style={{ marginRight: "10px" }}  color={ colorMode === "dark" ? "white" : "black"} />
-                <p style={{ marginRight: "10px", color: colorMode === "dark" ? "white" : "black"  }}>Mi pedido</p>
+                <FiShoppingCart size={25} style={{ marginRight: "10px" }}  color="white" />
+                <p style={{ marginRight: "10px", color: "white"  }}>Mi pedido</p>
 
                 <span
                   style={{

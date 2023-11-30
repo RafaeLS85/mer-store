@@ -26,10 +26,7 @@ export const CheckoutTable = ({ chart }: { chart: Chart[] }) => {
   if (!chart.length)
     return (
       <Container textAlign="center">
-        {CHECKOUT_PAGE.noItems}{" "}
-        <Link href="/" style={{ color: "#3AAFE9" }}>
-          Volver
-        </Link>{" "}
+        {CHECKOUT_PAGE.noItems}{" "}        
       </Container>
     );
 
