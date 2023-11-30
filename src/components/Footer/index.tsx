@@ -16,6 +16,7 @@ const Version = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         fontSize: "12px",
+        color: "white",
       }}
     >
       {packageData.version}
@@ -27,7 +28,7 @@ export const Footer = ({}: Props) => {
   const text = "Hola, quisiera consultar acerca de los productos de la tienda";
   const { colorMode, toggleColorMode } = useColorMode();  
 
-  const bg = colorMode === "dark" ? "#2D3748" : "#97a0a1";
+  const bg = "#2D3748";
 
   return (
     <Container maxW="6xl" bg={bg} >
@@ -44,13 +45,13 @@ export const Footer = ({}: Props) => {
           }}
         >
           <Link href="https://www.facebook.com/pacaratejidos/" target="_blank">
-            <AiFillFacebook size={25} color={ colorMode === "dark" ? "white" : "" }  />
+            <AiFillFacebook size={25} color="white"   />
           </Link>
           <Link
             href="https://www.instagram.com/pacara.tejidos/"
             target="_blank"
           >
-            <AiFillInstagram size={25} color={ colorMode === "dark" ? "white" : "" } />
+            <AiFillInstagram size={25} color="white"  />
           </Link>
           <Link
             href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
@@ -58,7 +59,7 @@ export const Footer = ({}: Props) => {
             )}`}
             target="_blank"
           >
-            <IoLogoWhatsapp size={25} color={ colorMode === "dark" ? "white" : "" } />
+            <IoLogoWhatsapp size={25} color="white" />
           </Link>
         </div>
         <Version />

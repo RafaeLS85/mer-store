@@ -17,7 +17,7 @@ export const Navbar = () => {
     <header>
       <Container
         maxW="6xl"
-        bg="#1a202c"
+        bg="#2D3748"
         centerContent        
         display="flex"
         alignItems="center"
