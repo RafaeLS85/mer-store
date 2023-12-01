@@ -1,6 +1,7 @@
 "use client";
 import { Product } from "@/types/types";
 import {
+  Box,
   Button,
   ButtonGroup,
   Card,
@@ -11,45 +12,73 @@ import {
   Image,
   Stack,
   Text,
+  useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { ModalComponent } from "../shared/Modal";
-import { useChartStore } from "@/store/store";
+// import { useChartStore } from "@/store/store";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
-import { disabled } from "@/utils";
+import { capitalize, cutString, disabled } from "@/utils";
 import { useChart } from "@/hooks/useChart";
 import { CARD } from "@/constants/card";
+import { fallback250 } from "@/constants/images";
+import { useChartStore } from "@/store/chart";
 
 interface Props {
   item: Product;
 }
 
 export const CardItem = ({ item }: Props) => {
-  const { category, description, id, image, price, stock, title } = item;
+  const {
+    category,
+    description,
+    id,
+    images_list,
+    price,
+    stock,
+    title,
+    thumbnail,
+  } = item;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const chartState = useChartStore();
   const router = useRouter();
   const { chartItem, addToChart } = useChart({ store: chartState, id, item });
   const isDisabled = disabled(chartItem, stock);
 
+  const { colorMode, toggleColorMode } = useColorMode();  
+
   return (
     <>
-      <Card maxW="sm" backgroundColor="#4A5568">
-        <CardBody>
+      <Card maxW="sm" backgroundColor={ colorMode === "dark" ? "#4A5568" : "lightgray"}  >
+        <Text
+          color={colorMode === "dark" ? "white" : "blackAlpha.700"}
+          fontSize="2xl"
+          as="b"
+          padding="2"
+          textAlign="center"
+          noOfLines={1}
+        >
+          {cutString(capitalize(title), 30)}
+        </Text>
+
+        <CardBody alignSelf="center">
           <Image
-            src={image}
+            cursor="pointer"
+            src={thumbnail}
             alt={title}
-            height={300}
-            width={300}
             borderRadius="lg"
             onClick={onOpen}
+            fallbackSrc={fallback250}
           />
-          <Stack mt="6" spacing="3">
-            <Heading size="md">{title.toUpperCase()}</Heading>
-            <Text>{description}</Text>
+
+          <Stack mt="6" spacing="3" textAlign="center">
+            <Stack noOfLines={3}>
+              <Text>{cutString(description, 30)}</Text>
+            </Stack>
+
             {stock ? (
               <Text color="green.400">
                 {CARD.stock} {stock}
@@ -63,7 +92,7 @@ export const CardItem = ({ item }: Props) => {
           </Stack>
         </CardBody>
         <Divider />
-        <CardFooter>
+        <CardFooter alignSelf="center">
           <ButtonGroup spacing="2">
             <Button
               variant="solid"
@@ -87,7 +116,7 @@ export const CardItem = ({ item }: Props) => {
         size="xl"
         onClose={onClose}
         isOpen={isOpen}
-        image={image}
+        images={images_list}
       />
       <ToastContainer />
     </>

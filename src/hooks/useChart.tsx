@@ -1,5 +1,6 @@
 import { success } from "@/components/shared/Notify";
-import { ChartState } from "@/store/store";
+import { ChartState } from "@/store/chart";
+// import { ChartState } from "@/store/store";
 import { Product } from "@/types/types";
 
 interface Props {

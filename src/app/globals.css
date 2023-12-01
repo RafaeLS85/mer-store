@@ -73,11 +73,25 @@
   }
 }
 
+
+ /* @media (prefers-color-scheme: dark) {
+  :root  {
+    color: white;
+  }
+} 
+ @media (prefers-color-scheme: light) {
+  :root {
+    color: black;
+  }
+}  */
+
 * {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
-  color: #fff;
+  margin: 0; 
+  
+  /* el color debe cambiar segun el tema  */
+  /* color: inherit;  */
 }
 
 html,
@@ -90,18 +104,51 @@ table {
   width: 100%;
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: #171D25;
-}
+} */
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+} */
+
+
+/* .theme-a {
+  background: #dca;
+  color: #731;
 }
+@media (prefers-color-scheme: dark) {
+  .theme-a.adaptive {
+    background: #753;
+    color: #dcb;
+    outline: 5px dashed #000;
+  }
+}
+
+
+.theme-b {
+  background: #447;
+  color: #bbd;
+}
+@media (prefers-color-scheme: light) {
+  .theme-b.adaptive {
+    background: #bcd;
+    color: #334;
+    outline: 5px dotted #000;
+  }
+} */
+
+/* <div class="box theme-a">Theme A (initial)</div>
+<div class="box theme-a adaptive">Theme A (changed if dark preferred)</div>
+<br />
+
+<div class="box theme-b">Theme B (initial)</div>
+<div class="box theme-b adaptive">Theme B (changed if light preferred)</div> */

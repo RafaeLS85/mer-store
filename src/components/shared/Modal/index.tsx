@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -7,24 +7,38 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
-} from '@chakra-ui/react'
-import Image from 'next/image'
+  Image,
+  Flex
+} from '@chakra-ui/react';
+import NextImage from 'next/image';
+import { IconButton } from '@chakra-ui/react';
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import { fallback500 } from '@/constants/images';
+import { useImages } from '@/hooks/useImages';
+import { ImagesContainer } from '../ImagesContainer';
 
 interface Props {
   onClose: () => void;
   size: string;
   isOpen: boolean;
-  image: string
+  images: string[];
 }
 
-export const ModalComponent = ({ onClose, size, isOpen, image }: Props) => {  
+export const ModalComponent = ({ onClose, size, isOpen, images }: Props) => {    
+  
+  const containerProps = {
+    justifyContent:'center',
+    alignItems:'center',
+    gap: 2
+  }
+
   return (      
       <Modal onClose={onClose} size={size} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={image} width={600} height={600} alt='modal'/>
+            <ImagesContainer images={images} containerProps={containerProps} />           
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Cerrar</Button>

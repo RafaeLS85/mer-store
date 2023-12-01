@@ -1,5 +1,5 @@
 import { PHONE_NUMBER } from "@/constants/config";
-import { Container } from "@chakra-ui/react";
+import { Container, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
@@ -16,6 +16,7 @@ const Version = () => {
         justifyContent: "flex-end",
         alignItems: "center",
         fontSize: "12px",
+        color: "white",
       }}
     >
       {packageData.version}
@@ -25,9 +26,12 @@ const Version = () => {
 
 export const Footer = ({}: Props) => {
   const text = "Hola, quisiera consultar acerca de los productos de la tienda";
+  const { colorMode, toggleColorMode } = useColorMode();  
+
+  const bg = "#2D3748";
 
   return (
-    <Container maxW="6xl" bg="#2D3748">
+    <Container maxW="6xl" bg={bg} >
       <footer>
         <div
           style={{
@@ -41,13 +45,13 @@ export const Footer = ({}: Props) => {
           }}
         >
           <Link href="https://www.facebook.com/pacaratejidos/" target="_blank">
-            <AiFillFacebook size={25} />
+            <AiFillFacebook size={25} color="white"   />
           </Link>
           <Link
             href="https://www.instagram.com/pacara.tejidos/"
             target="_blank"
           >
-            <AiFillInstagram size={25} />
+            <AiFillInstagram size={25} color="white"  />
           </Link>
           <Link
             href={`https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
@@ -55,7 +59,7 @@ export const Footer = ({}: Props) => {
             )}`}
             target="_blank"
           >
-            <IoLogoWhatsapp size={25} />
+            <IoLogoWhatsapp size={25} color="white" />
           </Link>
         </div>
         <Version />
